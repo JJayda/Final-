@@ -1,0 +1,130 @@
+//bitmojis
+var drawHead=function(HeadX,HeadY,headH){
+    //body
+    noStroke();
+    fill(54,24,24);
+    ellipse(HeadX+headH/100*210,HeadY+headH/100*180,headH/100*102,headH/100*123);
+    rect(HeadX+headH/100*164,HeadY+headH/100*203,headH/100*93,headH/100*56,headH/100*72);
+    fill(209, 174, 136);
+    ellipse(HeadX+headH/100*211,HeadY+headH/100*186,headH/100*86,headH/100*100);
+    fill(204, 155, 125);
+    ellipse(HeadX+headH/100*184,HeadY+headH/100*200,headH/100*21,headH/100*15);
+    ellipse(HeadX+headH/100*236,HeadY+headH/100*200,headH/100*21,headH/100*15);
+    ellipse(HeadX+headH/100*211,HeadY+headH/100*214,headH/100*11,headH/100*6);
+    fill(46, 6, 6);
+    ellipse(HeadX+headH/100*191,HeadY+headH/100*194,headH/100*16,headH/100*10);
+    ellipse(HeadX+headH/100*230,HeadY+headH/100*194,headH/100*16,headH/100*10);
+    stroke(46,6,6);
+    strokeWeight(headH/100*4);
+    line(HeadX+headH/100*178,HeadY+headH/100*190,HeadX+headH/100*198,HeadY+headH/100*190);
+    line(HeadX+headH/100*242,HeadY+headH/100*190,HeadX+headH/100*222,HeadY+headH/100*190);
+    noFill();
+    stroke(194, 134, 134);
+    arc(HeadX+headH/100*211,HeadY+headH/100*201,headH/100*96,headH/100*-44,259,283);
+    };
+
+
+var drawHair=function(hairX,hairY,hairH){
+    //hair
+    noStroke();
+    fill(54, 24, 24);
+    arc(hairX+hairH/100*179,hairY+hairH/100*131,hairH/100*75,hairH/100*106,5,119);
+    arc(hairX+hairH/100*244,hairY+hairH/100*138,hairH/100*39,hairH/100*106,55,194);
+    arc(hairX+hairH/100*174,hairY+hairH/100*190,hairH/100*30,hairH/100*145,54,201);
+    arc(hairX+hairH/100*245,hairY+hairH/100*190,hairH/100*30,hairH/100*145,-18,123);
+    };
+
+
+var drawBody=function(bodyX,bodyY,bodyH){
+    //body
+    fill(209, 174, 136);
+    rect(bodyX+bodyH/100*197,bodyY+bodyH/100*233,bodyH/100*27,bodyH/100*30,bodyH/100*0);
+    fill(135, 120, 120);
+    quad(bodyX+bodyH/100*235,bodyY+bodyH/100*241,bodyX+bodyH/100*184,bodyY+bodyH/100*241        ,bodyX+bodyH/100*168,bodyY+bodyH/100*289,bodyX+bodyH/100*255,bodyY+bodyH/100*290);
+    fill(255, 255, 255);
+    textSize(bodyH/100*21);
+    text("JLS",bodyX+bodyH/100*191,bodyY+bodyH/100*272);
+    //hairclip
+    fill(217, 167, 167);
+    ellipse(bodyX+bodyH/100*257,bodyY+bodyH/100*167,bodyH/100*27,bodyH/100*10);
+    ellipse(bodyX+bodyH/100*246,bodyY+bodyH/100*166,bodyH/100*18,bodyH/100*18);
+    };
+
+
+var drawBitmoji=function(bitmojiX,bitmojiY,bitmojiH){
+    drawHead(bitmojiX,bitmojiY,bitmojiH);
+    drawHair(bitmojiX,bitmojiY,bitmojiH);
+    drawBody(bitmojiX,bitmojiY,bitmojiH);
+    };
+    noStroke();
+//Gloabal Variables
+var currentScene=0;
+    
+//Button Class
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 150;
+    this.height = config.height || 50;
+    this.label = config.label || "Click";
+    this.onClick = config.onClick || function() {};
+};
+
+Button.prototype.draw = function() {
+    fill(186, 121, 186);
+    rect(this.x, this.y, this.width, this.height, 9);
+    fill(255, 255, 255);
+    textSize(41);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+32, this.y+this.height/14);
+};
+
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+
+Button.prototype.handleMouseClick = function() {
+    if (this.isMouseInside()) {
+        this.onClick();
+    }
+};
+
+
+var start = new Button({
+    x: 73,
+    y: 300,
+    label: "start!",
+    onClick: function() {
+        currentScene=1;
+        
+    }
+});
+mouseClicked = function() {
+      if(currentScene===0){
+        start.handleMouseClick();
+        }
+};
+    
+var splashScreen = function(){
+    currentScene=0;
+    background(37, 31, 61);
+    drawBitmoji(194,203,60);
+    fill(255, 255, 255);
+    textSize(50);
+    text("ASTEROIDS", 63,214);
+    start.draw();
+};
+
+var playGame = function(){
+    currentScene=1;
+    background(47, 47, 224);
+
+};
+
+draw = function() {
+    if(currentScene===0){splashScreen();}
+    if(currentScene===1){playGame();}
+};
