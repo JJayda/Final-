@@ -59,14 +59,13 @@ var drawBitmoji=function(bitmojiX,bitmojiY,bitmojiH){
     noStroke();
     
     // Riss's Bitmoji
-    var drawBitmoji=function(x,y,bitmojiHeight){
+ var drawRBitmoji=function(x,y,bitmojiHeight){
    noStroke();
 fill (132, 55, 34);
 ellipse (x+(bitmojiHeight/100*100),y+bitmojiHeight/100*100,bitmojiHeight/100*83,bitmojiHeight/100*100);//head
 fill(255, 255, 255);
 fill(89, 38, 11);
 stroke(232, 185, 35);
-
 
 ellipse(x+bitmojiHeight/100*68,y+bitmojiHeight/100*46,bitmojiHeight/100*48,bitmojiHeight/100*-32);//hair
 ellipse(x+bitmojiHeight/100*97,y+bitmojiHeight/100*68,bitmojiHeight/100*48,bitmojiHeight/100*-35);//hair
@@ -172,8 +171,8 @@ Button.prototype.handleMouseClick = function() {
 
 
 var start = new Button({
-    x: 73,
-    y: 300,
+    x: 117,
+    y: 117,
     label: "start!",
     onClick: function() {
         currentScene=1;
@@ -190,9 +189,10 @@ var splashScreen = function(){
     currentScene=0;
     background(37, 31, 61);
     drawBitmoji(194,203,60);
+    drawRBitmoji(100,248,58);
     fill(255, 255, 255);
     textSize(50);
-    text("ASTEROIDS", 63,214);
+    text("ASTEROIDS", 53,40);
     start.draw();
 };
 
