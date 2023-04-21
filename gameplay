@@ -187,19 +187,11 @@ var pause = new Button ({
         currentScene = 0;
     }
 });
-var next = new Button ({
-    x: 3,
-    y: 27,
-    label: "¡NEXT!",
-    onClick: function(){
-        currentScene = 3;
-    }
-});
+
 mouseClicked = function() {
      {
         start.handleMouseClick();
         pause.handleMouseClick(); 
-        next.handleMouseClick();
         }
 };
     
@@ -213,6 +205,7 @@ var splashScreen = function(){
     text("ASTEROIDS", 53,40);
     start.draw();
 };
+
 // new code 
 var score=0;
 var BOS=true;
@@ -229,6 +222,7 @@ fill(13, 13, 13);
 textSize(27);
 text("Game Over!! Out of Bounds :(",30,30); 
 };
+
 var playGame = function(){
     currentScene=1;
     background(242, 210, 189);
@@ -251,50 +245,11 @@ draw = function() {
      
 
 };
-var endSceneRiss = function()
-{currentScene=4;
-fill(13, 13, 13);
-background (100, 93, 176);
-textSize(25);
-text ("GAME OVER!!", 200,200);
-textSize(30);
-text("final score: " + score, 200,250);
-drawRBitmoji(160,54,50);
-fill(13, 13, 13);
-textSize(27);
-text("Game Over!! Out of Bounds :(",30,30); 
-};  
-  
-  
-var playGameRiss = function(){
-    currentScene=3;
-    background(51,184,100);
-     drawRBitmoji(mouseX,mouseY,60);
-     var stillplaying=true;
-draw = function() {
-        if (stillplaying) { background(245, 231, 231);
-        drawRBitmoji(mouseX,mouseY,50);
-        if (mouseY +60 >= 400){ BOS=false;}
-        else { BOS=true;
-        if (mouseX +60 >= 400){ BOS=false;}
-        else { BOS=true;}
-        }
-    
-        if (BOS!== true){ stillplaying=false; endSceneRiss();}
-}
-};
-};
-  
 
     
 draw = function() {
     if(currentScene===0){splashScreen();}
     if(currentScene===1){playGame();}
-    if (currentScene===2){endScene();}
-    if (currentScene===3){playGameRiss();
-    if (currentScene===4){endSceneRiss();
-    }
-    }
 };
 
 noStroke();
