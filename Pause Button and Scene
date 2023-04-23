@@ -261,11 +261,13 @@ draw = function() {
         else{ BOS=true;
         if (mouseX +30 >= 400){ BOS=false;}
         else { BOS=true;}
-        pause.draw();}
+       }
+         if(p===true){pauseScene();}     ////Using global varibale to try and change scene
+        else{ pause.draw();}
+        
         if (BOS!== true){ stillPlaying=false;
         endScene();
-        if(p===true){pauseScene();}     ////Using global varibale to try and change scene
-        else{playGame();}
+      
         }
      
 }
