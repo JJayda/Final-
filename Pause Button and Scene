@@ -255,15 +255,16 @@ text("Game Over!! Out of Bounds :(",30,30);
 
 var playGame = function(){
     currentScene=1;
-draw = function() {
         if (stillPlaying) { background(245, 231, 231);       drawBitmoji(mouseX-100,mouseY-100,50);
         if (mouseY +30 >= 400){ BOS=false;}
         else{ BOS=true;
         if (mouseX +30 >= 400){ BOS=false;}
         else { BOS=true;}
        }
-         if(p===true){pauseScene();}     ////Using global varibale to try and change scene
-        else{ pause.draw();}
+         if(p===true){pauseScene();
+         }     ////Using global varibale to try and change scene
+        else{ pause.draw();
+        }
         
         if (BOS!== true){ stillPlaying=false;
         endScene();
@@ -271,8 +272,7 @@ draw = function() {
         }
      
 }
-};
-     /// I think that  the pause button isnt working because it is in the draw function, but we need the button in the draw function for it to show.
+
 
 };
 
