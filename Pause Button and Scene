@@ -150,6 +150,7 @@ var Button = function(config) {
 };
 
 Button.prototype.draw = function() {
+    noStroke();
     fill(186, 121, 186);
     rect(this.x, this.y, this.width, this.height, 9);
     fill(255, 255, 255);
@@ -204,6 +205,22 @@ var restart = new Button ({
     }
 });
 
+//Bitmoji Class
+var Bitmoji = function(x, y) {
+    this.x = mouseX;
+    this.y = mouseY;
+    };
+
+Bitmoji.prototype.draw = function() {
+    drawBitmoji(mouseX-80,mouseY-80,40);
+    };
+
+
+
+
+var Bitmoji = new Bitmoji(mouseX, mouseY);
+
+
 
 mouseClicked = function() {
      {
@@ -253,9 +270,10 @@ text("Game Over!! Out of Bounds :(",30,30);
 
 
 
+
 var playGame = function(){
     currentScene=1;
-        if (stillPlaying) { background(245, 231, 231);       drawBitmoji(mouseX-100,mouseY-100,50);
+        if (stillPlaying) { background(245, 231, 231); Bitmoji.draw();
         if (mouseY +30 >= 400){ BOS=false;}
         else{ BOS=true;
         if (mouseX +30 >= 400){ BOS=false;}
