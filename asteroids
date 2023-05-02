@@ -1,3 +1,36 @@
+
+noStroke();
+var xPositions = [];
+var yPositions = [];
+var dropColor  =[];
+var numDrops = 1;
+var bits=100;
+var dropSpeed = 2;
+var bitRain=true;
+var currentScene=0;
+var stillPlaying=true;
+var score=0;
+var BOS=true;
+
+var stars = function (){
+for (var i =0; i<numDrops; ++i)
+    {
+        stroke(140, 121, 0);
+    xPositions.push(round(random(4,390)));
+    yPositions.push(round(random(0,300)));
+    dropColor.push(color(255,255,255))
+    ;}
+    
+    for (var i = 0; i < xPositions.length; i++) {
+         fill(dropColor[i]);//drop color
+    
+        ellipse(xPositions[i], yPositions[i], 5, 7);// draws drops
+    yPositions[i] += dropSpeed;
+        
+    }   
+};
+
+
 //bitmojis
 var drawHead=function(HeadX,HeadY,headH){
     //body
@@ -137,7 +170,7 @@ line(x+bitmojiHeight/100*90,y+bitmojiHeight/100*216,x+bitmojiHeight/100*96,y+bit
 //Gloabal Variables
 var currentScene=0;
 var stillPlaying=true;
-var p = false;
+var playerLives = 3;
 
 //Button Class
 var Button = function(config) {
@@ -151,7 +184,7 @@ var Button = function(config) {
 
 Button.prototype.draw = function() {
     noStroke();
-    fill(186, 121, 186);
+    fill(80, 90, 171);
     rect(this.x, this.y, this.width, this.height, 9);
     fill(255, 255, 255);
     textSize(20);
@@ -188,7 +221,6 @@ var pause = new Button ({
     y: 27,
     label: "¡PAUSE!",
     onClick: function(){
-        p=true;
         currentScene = 3;
         stillPlaying= false;
 
@@ -197,110 +229,104 @@ var pause = new Button ({
 var restart = new Button ({
     x: 127,
     y: 141,
-    label: "RESTART",
+    label: "CONTINUE",
     onClick: function(){
         stillPlaying= true;
         currentScene = 1;
 
     }
 });
-//Bitmoji
-var Bitmoji = function(x, y) {
-    this.x = mouseX;
-    this.y = mouseY;
-    };
+var next = new Button ({
+    x: 27,
+    y: 202,
+    label: "Next",
+    onClick: function(){
+        stillPlaying= true;
+        currentScene = 4;
 
-Bitmoji.prototype.draw = function() {
-    drawBitmoji(mouseX-80,mouseY-80,40);
-    };
- 
-var Asteroid = function(x, y) {
-    this.x = x; 
-    this.y = y;
-    };
-    
-Asteroid.prototype.draw = function() {
-   fill(184, 184, 184);
-  ellipse(this.x,this.y,40,40);
-  this.x=this.x+2;
-    };
-
-
-var Bitmoji = new Bitmoji(mouseX, mouseY);
-var asteroid = new Asteroid (100,100);
-
+    }
+});
 
 mouseClicked = function() {
      {
         start.handleMouseClick();
         pause.handleMouseClick(); 
         restart.handleMouseClick();
+        next.handleMouseClick();
         
         }
 };
-//new code------
-var asteroids=[];
+// NEW CODE player 
+    var Player = function (x,y){
+this.x = mouseX;
+this.y = mouseY;
+};
 
+Player.prototype.draw = function() {
+    stroke(0, 0, 0);
+    fill(204, 198, 198);
+     triangle(mouseX+-15, mouseY+10, mouseX+15, mouseY+10, mouseX, mouseY-20);
+};
 
-for (var i = 0; i < 20; i++) {  
-    asteroids.push(new Asteroid(i * 51 - 582, random(0, 400)));
-    }
-    
+var player = new Player (mouseX, mouseY-100);
+
 var splashScreen = function(){
     currentScene=0;
     background(37, 31, 61);
+        stars();
     drawBitmoji(194,203,60);
     drawRBitmoji(100,248,58);
     fill(255, 255, 255);
     textSize(50);
     text("ASTEROIDS", 53,40);
     start.draw();
-};
 
+};
+//New code Pause Scene ---------
 var pauseScene = function(){
     currentScene=3;
-background(242, 210, 189);
+background(57, 57, 89);
 fill(181, 136, 136);
 textSize(30);
 text("Game Paused",100,100);
 restart.draw();
+next.draw();
 };
 
-var score=0;
-var BOS=true;
 
 var endScene = function()
 {currentScene=2;
-fill(13, 13, 13);
-background (255, 0, 0);
+fill(255, 255, 255);
+background (57, 57, 89);
 textSize(25);
 text ("GAME OVER!!", 200,200);
 textSize(30);
 text("final score: " + score, 200,250);
 drawBitmoji(160,54,50);
-fill(13, 13, 13);
+drawRBitmoji(20,54,50);
+fill(240, 8, 35);
 textSize(27);
 text("Game Over!! Out of Bounds :(",30,30); 
 };
 
 
 
-
 var playGame = function(){
+  
     currentScene=1;
-        if (stillPlaying) { background(245, 231, 231);Bitmoji.draw();
-        for(var i =0; i< asteroids.length; i++){
-    asteroids[i].draw();}
+        if (stillPlaying) { 
+            background(57, 57, 89); 
+            textSize(15);
+            text("lives : "+playerLives, 300,10);
+            text ("score : " + score, 10,10);
+            player.draw();      
         if (mouseY +30 >= 400){ BOS=false;}
         else{ BOS=true;
         if (mouseX +30 >= 400){ BOS=false;}
         else { BOS=true;}
        }
-         if(p===true){pauseScene();
-         }     ////Using global varibale to try and change scene
-        else{ pause.draw();
-        }
-        
+     
+        pause.draw();
         if (BOS!== true){ stillPlaying=false;
         endScene();
       
@@ -308,19 +334,32 @@ var playGame = function(){
      
 }
 
-     
 
 };
 
+ var playGameRiss = function(){
+    currentScene=4;
+    background(51,184,100);
+   player.draw();
+     var stillplaying=true;
+
+        if (stillplaying) { background(57, 57, 89);
+    player.draw();
+    if (mouseY +60 >= 400){ BOS=false;}
+        else { BOS=true;
+        if (mouseX +60 >= 400){ BOS=false;}
+        else { BOS=true;}
+        }
     
+        if (BOS!== true){ stillplaying=false;
+endScene(); } 
+}
+};
+     
 draw = function() {
     if(currentScene===0){splashScreen();}
     if(currentScene===1){playGame();}
     if(currentScene===3){pauseScene();}
+     if (currentScene===4){playGameRiss();
+    }
 };
-
-noStroke();
-
-// stiill need to figure out how the asteroids will appear on random x AND y axis outside 
-//collision between asteroids and bitmoji(bitmoji has a set of lives and if they lose them the game ends
-//add a prototype in the bitmoji class for shooting. how will player aim?
