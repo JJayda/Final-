@@ -110,7 +110,7 @@ var signs =[
     {
     name:"Aries",
     dates:"March 21 - April 19",
-    facts:"Independent and strong‒willed, you are a force to be reckoned with! You love nothing more than an exciting new goal to tackle, and you do your best work when you’re flying solo. Your passion and energy keep the rest of us on our toes",
+    facts:"     Independent and strong‒willed, you are a force to be reckoned with! You love nothing more than an exciting new goal to tackle, and you do your best work when you’re flying solo. Your passion and energy keep the rest of us on our toes",
      element:"Fire",
      animal:"Hawk"
     },
@@ -134,7 +134,8 @@ var signs =[
     facts:"Your intuition is downright uncanny! You do your best socializing in small groups and prefer intimate relationships even if it means your social circle is on the smaller side. Your creative spirit will bring joy to all you meet.",
      element:"Water",
     animal:"Moose"
-    },
+    }];
+var signs2 =[
     {
     name: "Leo",
     dates: "July 23 - August 22",
@@ -179,6 +180,7 @@ var signs =[
     }];
 
 var Button = function(config) {
+    currentScene=1;
     this.x = config.x || 0;
     this.y = config.y || 0;
     this.width = config.width || 150;
@@ -221,6 +223,7 @@ var start = new Button({
 });
 
 var quit = new  Button ({
+    
     x: 200,
     y: 200,
     label: "Quit",
@@ -238,8 +241,8 @@ var play = new  Button ({
 
     }
 });
-// something wrong with Aries button
-var ariesSign = new  Button ({
+/*// something wrong with Aries button
+var aries = new  Button ({
     x: 20,
     y: 150,
     label: "Aries",
@@ -348,33 +351,124 @@ var libra= new  Button ({
 
     }
 });
+*/
 var showSigns = function (a,index)
 { 
+    image(getImage("cute/Star"), 15, -12, 54,67);
     textAlign(LEFT,TOP);
-    fill(255, 252, 255);
-    textSize(12);
-    text("Sign: " + a[index].name + "  ",17,260);
-    text("Date: " +a[index].dates,17,350);
-    text("Sign Description: " +a[index].facts,17,280);
-    text("Animal Representation: " +a[index].animal,17,310);
-    /*image(a[index].image,249,196,128,97);
-    text("Rating: ", 17, 325);
-    for (var i = 0; i < a[index].rating; i++)
-    {
-        image(getImage("cute/GemGreen"), (i*30) + 80, 320, 35, 30);
-    }*/
+    fill(56, 14, 56);
+    textSize(28);
+    text("Your sign is " + a[index].name + " ! ",77,33);
+    textSize(15);
+    text("Your birthday is between " +a[index].dates,45,119);
+    text(" Description:",145,150);
+    text(a[index].name + " is a " + a[index].element + " sign!",130,176);
+    text( a[index].facts,35,200,327,300);
+    text("The Animal your sign represents is a " +a[index].animal,55,347);
+    
+    
 };
-
+/*var showSigns2 = function (a,index)
+{  currentScene=3;
+    image(getImage("cute/Star"), 15, -12, 54,67);
+    textAlign(LEFT,TOP);
+    fill(56, 14, 56);
+    textSize(28);
+    text("Your sign is " + a[index].name + " ! ",77,33);
+    textSize(15);
+    text("Your birthday is between " +a[index].dates,45,119);
+    text(" Description:",145,150);
+    text(a[index].name + " is a " + a[index].element + " sign!",130,176);
+    text( a[index].facts,35,200,327,300);
+    text("The Animal your sign represents is a " +a[index].animal,55,347);
+    
+   
+};
+*/
 // members info once clicked
 
+var Aries= function(){
+    noStroke();
+currentScene=3;
+background(255, 255, 255);
+fill(247, 220, 225);
+rect(0,0,400,103);
+showSigns(signs,2);
+};
+
+
+var Taurus = function(){
+currentScene=4;
+background(207, 192, 205);
+    showSigns(signs,3);
+};
+var Gemini = function(){
+currentScene=5;
+background(207, 192, 205);
+    showSigns(signs,3);
+};
+var Cancer = function(){
+currentScene=6;
+background(207, 192, 205);
+    showSigns(signs,3);
+};
+var Leo = function(){
+currentScene=7;
+background(207, 192, 205);
+    showSigns(signs2,0);
+};
+var Virgo  = function(){
+currentScene=8;
+background(207, 192, 205);
+    showSigns(signs2,3);
+};
+var Scorpio = function(){
+currentScene=9;
+background(207, 192, 205);
+    showSigns(signs2,3);
+};
+var Sag = function(){
+currentScene=10;
+background(207, 192, 205);
+    showSigns(signs2,3);
+};
+var Cap = function(){
+currentScene=11;
+background(207, 192, 205);
+    showSigns(signs2,3);
+};
+var Aqua = function(){
+currentScene=12;
+background(207, 192, 205);
+    showSigns(signs,3);
+};
+var Libra = function(){
+currentScene=14;
+background(207, 192, 205);
+    showSigns(signs2,3);
+};
+var Pisces = function(){
+currentScene=13;
+background(207, 192, 205);
+    showSigns(signs,3);
+}; 
 
 mouseClicked = function() {
      {
+        if(currentScene===1){
         quit.handleMouseClick();
         start.handleMouseClick();
-        play.handleMouseClick();
-       
-       //ariesSign.handleMouseClick();
+        play.handleMouseClick();}
+         
+    if( mouseX > 200 && mouseX < 380 && mouseY > 130 && mouseY < 150){ currentScene=7; Leo();}
+    if(currentScene===2 && mouseX > 200 && mouseX < 380 && mouseY > 170 && mouseY < 200){currentScene=8; Virgo(); }
+    if(currentScene===2 && mouseX > 200 && mouseX < 380 && mouseY > 220 && mouseY < 250){currentScene=14; Libra(); }
+    if(currentScene===2 && mouseX > 200 && mouseX < 380 && mouseY > 270 && mouseY < 300){currentScene=9; Scorpio();}
+    if(currentScene===2 && mouseX > 200 && mouseX < 380 && mouseY > 310 && mouseY < 330){currentScene=10; Sag();}
+    if(currentScene===2 && mouseX > 200 && mouseX < 380 && mouseY > 350 && mouseY < 370){currentScene=11; Cap(); }
+
+      
+        /*aries.handleMouseClick();
         taurus.handleMouseClick();
         gemini.handleMouseClick();
         cancer.handleMouseClick();
@@ -385,41 +479,11 @@ mouseClicked = function() {
         capir.handleMouseClick();
         aqua.handleMouseClick();
         pisces.handleMouseClick();
-        libra.handleMouseClick();
+        libra.handleMouseClick();}*/
         
      }};
         {
-   /* if (mouseX>=1 && mouseX<=130&&mouseY>= 25&&mouseY<=50)
-    {
-      stroke(255, 215, 0);
-      fill(195, 177, 225);
-      currentScene=4;
-      showMembers(signs,0);
-    }
-    else if 
-     (mouseX>=1 && mouseX<=130&&mouseY>= 43&&mouseY<=63)
-    {
-      stroke(255, 215, 0);
-      fill(250, 200, 152);
-       currentScene=3;
-      showMembers(signs,1);
-    }
-    else if 
-     (mouseX>=1 && mouseX<=130&&mouseY>= 64&&mouseY<=84)
-    {
-      stroke(255, 215, 0);
-      fill(131,105,83);
-    rect(-10,170,434,369,355);
-      showMembers(signs,2);
-    }
-    else if 
-     (mouseX>=1 && mouseX<=106&&mouseY>= 85&&mouseY<=105)
-    {
-      stroke(255, 215, 0);
-      fill(167, 199, 231);
-     currentScene=5;
-      showMembers(signs,3);
-    }*/
+  
 
 }
 var splashScreen = function(){
@@ -449,15 +513,25 @@ imageMode(CENTER);
 
 var GameScene= function()
 {currentScene=2;
-    background(247, 220, 225);
+    background(229, 255, 230);
 noStroke();
 fill(202,231,193);
-rect(248,10,150,133,130);//bitmoji box
-drawBitmoji(284,9,45);
-fill(0, 0, 0);
+rect(9,9,363,102,19);//bitmoji box
+drawBitmoji(284,9,40);
+fill(128, 89, 55);
 textSize(25);
- text("When is your Birthday?",3,18);
-        taurus.draw();
+ text("When is your Birthday?",23,64);
+     for(var i = 0; i < signs2.length; i++)
+ {
+     textSize(12);
+     text(signs2[i].dates,205,i*45 + 133);
+ }
+ for(var i = 0; i < signs.length; i++)
+ {
+     textSize(12);
+     text(signs[i].dates,36,i*45 + 133);
+ }
+       /* taurus.draw();
         gemini.draw();
         cancer.draw();
         leo.draw();
@@ -467,24 +541,27 @@ textSize(25);
         capir.draw();
         aqua.draw();
         pisces.draw();
-        libra.draw();   
+        libra.draw(); */  
 };
 
-var aries= function(){
-currentScene=3;
-background(255, 0, 0);
-   showSigns(signs,10);
-};
 
-var Taurus = function(){
-currentScene=5;
-background(207, 192, 205);
-    showSigns(signs,1);
-};
 draw = function() {
     if(currentScene===0){splashScreen();}
     if (currentScene===1){introScene();}
      if(currentScene===2){GameScene();}
-      if(currentScene===3){aries();}
+      else if(currentScene===3){Aries();}
+       else if(currentScene===4){Taurus();} 
+       else if(currentScene===5){Gemini();} 
+       else if(currentScene===6){Cancer();} 
+       else if(currentScene===7){Leo();}
+       else if(currentScene===8){Virgo();}
+       else if(currentScene===9){Scorpio();} 
+       else if(currentScene===10){Sag();}
+       else if(currentScene===11){Cap();} 
+       else if(currentScene===12){Aqua();}
+       else if(currentScene===13){Pisces();}
+        else if(currentScene===14){Libra();}
+      
      
 };
+
