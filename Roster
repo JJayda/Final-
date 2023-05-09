@@ -3,6 +3,8 @@ The facts come from Mosiac: Your Guide to the 12 Zodiac Dates & Traits
 https://www.tenthousandvillages.com/mosaic/your-guide-to-the-12-zodiac-dates-traits/
 
 Animals are from "Hawk, lion or snake — which is the spirit animal for your zodiac sign?" https://www.lifestyleasia.com/ind/astrology/zodiacs/know-the-spirit-animal-for-all-zodiac-signs/#:~:text=Answer%3A%20The%20seven%20zodiac%20signs,sea%20goat%20and%20Pisces%20—%20fish.
+
+colors are from:https://artincontext.org/zodiac-colors/#:~:text=Each%20zodiac%20sign%20has%20a,as%20the%20zodiac%20color%20chart.
 */
 var currentScene=0;
 var stillPlaying=true;
@@ -233,7 +235,7 @@ var signs2 =[
     }];
 
 var Button = function(config) {
-    currentScene=1;
+    currentScene=0;
     this.x = config.x || 0;
     this.y = config.y || 0;
     this.width = config.width || 150;
@@ -243,10 +245,13 @@ var Button = function(config) {
 };
 Button.prototype.draw = function() {
     noStroke();
-     fill(0, 100, 0);
-    rect(this.x, this.y, this.width, this.height, 9);
+     fill
+(232, 185, 35);
+
+     //(0, 100, 0);
+    rect(this.x, this.y, this.width*0.7, this.height*0.78, 39);
     fill(255, 255, 255);
-    textSize(32);
+    textSize(25);
     textAlign(LEFT, TOP);
     text(this.label, this.x+32, this.y+this.height/14);
 };
@@ -266,11 +271,12 @@ Button.prototype.handleMouseClick = function() {
 
 
 var start = new Button({
-    x: 117,
-    y: 117,
+    x:135,
+    y: 100,
     label: "Start!",
     onClick: function() {
         currentScene=1;
+        fill(255, 0, 0);
         
     }
 });
@@ -289,6 +295,15 @@ var play = new  Button ({
     x: 20,
     y: 200,
     label: "Play",
+    onClick: function(){
+        currentScene = 2;
+
+    }
+});
+var back = new  Button ({
+    x: 150,
+    y: 65,
+    label: "Back",
     onClick: function(){
         currentScene = 2;
 
@@ -331,14 +346,7 @@ var cancer = new  Button ({
 
     }
 });
-var leo = new  Button ({
-    x: 20,
-    y: 350,
-    label: "Leo",
-    onClick: function(){
-        currentScene = 7;
 
-    }
 });
 var virgo = new  Button ({
     x: 20,
@@ -444,9 +452,12 @@ var Aries= function(){
     currentScene=3;
     noStroke();
     background(255, 255, 255);
-    fill(255, 220, 181);
+    fill(255,105,97);
     rect(0,0,400,103);
     showSigns(signs,2);
+        back.draw();
+
+    
 };
 
 var Taurus = function(){
@@ -456,38 +467,43 @@ var Taurus = function(){
     fill(192, 232, 167);
     rect(0,0,400,103);
     showSigns(signs,3);
+    back.draw();
 };
 var Gemini = function(){
     currentScene=5;
     noStroke();
     background(255, 255, 255);
-    fill(251, 252, 210);
+    fill(255, 255, 204);
     rect(0,0,400,103);
     showSigns(signs,4);
+    back.draw();
 };
 var Cancer = function(){
     currentScene=6;
     noStroke();
     background(255, 255, 255);
-    fill(210, 247, 250);
+    fill(204, 204, 204);
     rect(0,0,400,103);
     showSigns(signs,5);
+    back.draw();
 };
 var Leo = function(){
     currentScene=7;
     noStroke();
     background(255, 255, 255);
-    fill(255, 220, 181);
+    fill(230, 204, 153);
     rect(0,0,400,103);
     showSigns(signs2,0);
+    back.draw();
 };
 var Virgo  = function(){
     currentScene=8;
     noStroke();
     background(255, 255, 255);
-    fill(192, 232, 167);
+    fill(204, 153, 102);
     rect(0,0,400,103);
     showSigns(signs2,1);
+    back.draw();
 };
 var Scorpio = function(){
     currentScene=9;
@@ -496,69 +512,86 @@ var Scorpio = function(){
     fill(210, 247, 250);
     rect(0,0,400,103);
     showSigns(signs2,3);
+    back.draw();
 };
 var Sag = function(){
     currentScene=10;
     noStroke();
     background(255, 255, 255);
-    fill(255, 220, 181);
+    fill(221, 204, 255);
     rect(0,0,400,103);
     showSigns(signs2,4);
+    back.draw();
 };
 var Cap = function(){
     currentScene=11;
     noStroke();
     background(255, 255, 255);
-    fill(192, 232, 167);
+    fill(204, 204, 204);
     rect(0,0,400,103);
     showSigns(signs2,5);
+    back.draw();
 };
 var Aqua = function(){
     currentScene=12;
     noStroke();
     background(255, 255, 255);
-    fill(251, 252, 210);
+    fill(204, 229, 255);
     rect(0,0,400,103);
     showSigns(signs,0);
+    back.draw();
 };
 var Libra = function(){
     currentScene=14;
     noStroke();
     background(255, 255, 255);
-    fill(251, 252, 210);
+    fill(255, 204, 204);
     rect(0,0,400,103);
     showSigns(signs2,2);
+    back.draw();
 };
 var Pisces = function(){
     currentScene=13;
     noStroke();
     background(255, 255, 255);
-    fill(210, 247, 250);
+    fill(144, 238, 144);
     rect(0,0,400,103);
     showSigns(signs,1);
+    back.draw();
 }; 
 
 mouseClicked = function() {
-     {
+ 
+     if (mouseIsPressed){
+             back.handleMouseClick();
+           playSound(getSound("rpg/metal-chime"));
+     }
+    back.handleMouseClick();
+    {
+        if(currentScene===0){
+        start.handleMouseClick();
+       }
         if(currentScene===1){
         quit.handleMouseClick();
-        start.handleMouseClick();
-        play.handleMouseClick();}
-    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 130 && mouseY < 150){ currentScene=12; Aqua();}
-    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 170 && mouseY < 200){currentScene=13; Pisces(); }
-    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 220 && mouseY < 250){currentScene=3; Aries(); }
-    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 270 && mouseY < 300){currentScene=4; Taurus();}
-    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 310 && mouseY < 330){currentScene=5; Gemini();}
-    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 350 && mouseY < 370){currentScene=6; Cancer(); }
+        play.handleMouseClick();
+        }
+    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 130 && mouseY < 150){ currentScene=12; Aqua();
+     playSound(getSound("rpg/water-bubble"));
+    }
+    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 170 && mouseY < 200){currentScene=13; Pisces();   playSound(getSound("rpg/water-bubble"));}
+    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 220 && mouseY < 250){currentScene=3; Aries();   playSound(getSound("rpg/water-bubble"));}
+    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 270 && mouseY < 300){currentScene=4; Taurus(); playSound(getSound("rpg/water-bubble"));}
+    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 310 && mouseY < 330){currentScene=5; Gemini(); playSound(getSound("rpg/water-bubble"));}
+    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 350 && mouseY < 370){currentScene=6; Cancer();  playSound(getSound("rpg/water-bubble"));}
          
-    if( currentScene===2 && stillPlaying===true &&  mouseX > 200 && mouseX < 380 && mouseY > 130 && mouseY < 150){ currentScene=7; Leo();}
-    if(currentScene===2 && stillPlaying===true &&  mouseX > 200 && mouseX < 380 && mouseY > 170 && mouseY < 200){currentScene=8; Virgo(); }
-    if(currentScene===2 && stillPlaying===true && mouseX > 200 && mouseX < 380 && mouseY > 220 && mouseY < 250){currentScene=14; Libra(); }
-    if(currentScene===2 && stillPlaying===true && mouseX > 200 && mouseX < 380 && mouseY > 270 && mouseY < 300){currentScene=9; Scorpio();}
-    if(currentScene===2 && stillPlaying===true && mouseX > 200 && mouseX < 380 && mouseY > 310 && mouseY < 330){currentScene=10; Sag();}
-    if(currentScene===2 && stillPlaying===true && mouseX > 200 && mouseX < 380 && mouseY > 350 && mouseY < 370){currentScene=11; Cap(); }
-
-      
+    if( currentScene===2 && stillPlaying===true &&  mouseX > 200 && mouseX < 380 && mouseY > 130 && mouseY < 150){ currentScene=7; Leo(); playSound(getSound("rpg/water-bubble"));}
+    if(currentScene===2 && stillPlaying===true &&  mouseX > 200 && mouseX < 380 && mouseY > 170 && mouseY < 200){currentScene=8; Virgo(); playSound(getSound("rpg/water-bubble")); }
+    if(currentScene===2 && stillPlaying===true && mouseX > 200 && mouseX < 380 && mouseY > 220 && mouseY < 250){currentScene=14; Libra();  playSound(getSound("rpg/water-bubble"));}
+    if(currentScene===2 && stillPlaying===true && mouseX > 200 && mouseX < 380 && mouseY > 270 && mouseY < 300){currentScene=9; Scorpio(); playSound(getSound("rpg/water-bubble"));}
+    if(currentScene===2 && stillPlaying===true && mouseX > 200 && mouseX < 380 && mouseY > 310 && mouseY < 330){currentScene=10; Sag(); playSound(getSound("rpg/water-bubble"));}
+    if(currentScene===2 && stillPlaying===true && mouseX > 200 && mouseX < 380 && mouseY > 350 && mouseY < 370){currentScene=11; Cap(); playSound(getSound("rpg/water-bubble")); }
+    
+      playSound(getSound("rpg/metal-chime"));
         /*aries.handleMouseClick();
         taurus.handleMouseClick();
         gemini.handleMouseClick();
@@ -578,8 +611,8 @@ mouseClicked = function() {
 
 }
 var splashScreen = function(){
+
     currentScene=0;
-    stillPlaying = false;
     background(37, 31, 61);
     //Jayda's Bitmoji
     //drawBitmoji(194,203,60);
@@ -589,7 +622,12 @@ var splashScreen = function(){
     fill(255, 255, 255);
     textSize(50);
     text("ASTROLOGY", 45,40);
-    start.draw();
+    textSize(12);
+     text("Hello There! Our names are Riss and Jayda! We're here to guide you on your astrological journey. Above you will have the option to start and learn about different zodiac signs.",33,157,300,300);
+     text("Riss Rincon Rogers", 251,366);
+      text("Jayda Silva", 95,361);
+      
+      start.draw();
 };
 var introScene= function()
 {
@@ -598,7 +636,7 @@ var introScene= function()
      background(37, 31, 61);
     textSize(16);
     fill(255, 255, 255);
-    text("Hello There! My name is Starry I'm here to guide you on your astrological journey. Down belowo you will have the option to enter my realm or quit. Either way the choice is yours but I do hope you choose to proceed. Have Fun ;)",40,40,300,300);
+     text("Hi my name is Estrella, I'm here to give you some background if you don't know what a zodiac sign is. The definition of Astrology is: the study of the movements and relative positions of celestial bodies interpreted as having an influence on human affairs and the natural world.",47,32,300,300);
     imageMode(CENTER);
     image(getImage("cute/Star"), 300, 300, 100,100);
     quit.draw();
