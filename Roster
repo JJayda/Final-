@@ -6,6 +6,69 @@ Animals are from "Hawk, lion or snake — which is the spirit animal for your zo
 */
 var currentScene=0;
 var stillPlaying=true;
+
+// Bitmojis
+//bitmojis
+var drawHead=function(HeadX,HeadY,headH){
+    //body
+    noStroke();
+    fill(54,24,24);
+    ellipse(HeadX+headH/100*210,HeadY+headH/100*180,headH/100*102,headH/100*123);
+    rect(HeadX+headH/100*164,HeadY+headH/100*203,headH/100*93,headH/100*56,headH/100*72);
+    fill(209, 174, 136);
+    ellipse(HeadX+headH/100*211,HeadY+headH/100*186,headH/100*86,headH/100*100);
+    fill(204, 155, 125);
+    ellipse(HeadX+headH/100*184,HeadY+headH/100*200,headH/100*21,headH/100*15);
+    ellipse(HeadX+headH/100*236,HeadY+headH/100*200,headH/100*21,headH/100*15);
+    ellipse(HeadX+headH/100*211,HeadY+headH/100*214,headH/100*11,headH/100*6);
+    fill(46, 6, 6);
+    ellipse(HeadX+headH/100*191,HeadY+headH/100*194,headH/100*16,headH/100*10);
+    ellipse(HeadX+headH/100*230,HeadY+headH/100*194,headH/100*16,headH/100*10);
+    stroke(46,6,6);
+    strokeWeight(headH/100*4);
+    line(HeadX+headH/100*178,HeadY+headH/100*190,HeadX+headH/100*198,HeadY+headH/100*190);
+    line(HeadX+headH/100*242,HeadY+headH/100*190,HeadX+headH/100*222,HeadY+headH/100*190);
+    noFill();
+    stroke(194, 134, 134);
+    arc(HeadX+headH/100*211,HeadY+headH/100*201,headH/100*96,headH/100*-44,259,283);
+    };
+
+
+var drawHair=function(hairX,hairY,hairH){
+    //hair
+    noStroke();
+    fill(54, 24, 24);
+    arc(hairX+hairH/100*179,hairY+hairH/100*131,hairH/100*75,hairH/100*106,5,119);
+    arc(hairX+hairH/100*244,hairY+hairH/100*138,hairH/100*39,hairH/100*106,55,194);
+    arc(hairX+hairH/100*174,hairY+hairH/100*190,hairH/100*30,hairH/100*145,54,201);
+    arc(hairX+hairH/100*245,hairY+hairH/100*190,hairH/100*30,hairH/100*145,-18,123);
+    };
+
+
+var drawBody=function(bodyX,bodyY,bodyH){
+    //body
+    fill(209, 174, 136);
+    rect(bodyX+bodyH/100*197,bodyY+bodyH/100*233,bodyH/100*27,bodyH/100*30,bodyH/100*0);
+    fill(135, 120, 120);
+    quad(bodyX+bodyH/100*235,bodyY+bodyH/100*241,bodyX+bodyH/100*184,bodyY+bodyH/100*241        ,bodyX+bodyH/100*168,bodyY+bodyH/100*289,bodyX+bodyH/100*255,bodyY+bodyH/100*290);
+    fill(255, 255, 255);
+    textSize(bodyH/100*21);
+    text("JLS",bodyX+bodyH/100*191,bodyY+bodyH/100*272);
+    //hairclip
+    fill(217, 167, 167);
+    ellipse(bodyX+bodyH/100*257,bodyY+bodyH/100*167,bodyH/100*27,bodyH/100*10);
+    ellipse(bodyX+bodyH/100*246,bodyY+bodyH/100*166,bodyH/100*18,bodyH/100*18);
+    };
+
+// Jayda's Bitmoji
+var drawBitmojiJ=function(bitmojiX,bitmojiY,bitmojiH){
+    drawHead(bitmojiX,bitmojiY,bitmojiH);
+    drawHair(bitmojiX,bitmojiY,bitmojiH);
+    drawBody(bitmojiX,bitmojiY,bitmojiH);
+    };
+    noStroke();
+    
+    
 var drawBitmoji=function(x,y,bitmojiHeight) // drawing Bitmoji
 {
    noStroke();
@@ -15,23 +78,13 @@ fill(255, 255, 255);
 fill(89, 38, 11);
 stroke(232, 185, 35);
 
-
 ellipse(x+bitmojiHeight/100*68,y+bitmojiHeight/100*46,bitmojiHeight/100*48,bitmojiHeight/100*-32);//hair
-
-
-
 ellipse(x+bitmojiHeight/100*97,y+bitmojiHeight/100*68,bitmojiHeight/100*48,bitmojiHeight/100*-35);//hair
-
 ellipse(x+bitmojiHeight/100*119,y+bitmojiHeight/100*(54),bitmojiHeight/100*48,bitmojiHeight/100*-32);//hair
-
 ellipse(x+bitmojiHeight/100*97,y+bitmojiHeight/100*60,bitmojiHeight/100*48,bitmojiHeight/100*-35);//hair
-
 ellipse(x+bitmojiHeight/100*76,y+bitmojiHeight/100*47,bitmojiHeight/100*48,bitmojiHeight/100*-32);//hair
-
 ellipse(x+bitmojiHeight/100*119,y+bitmojiHeight/100*56,bitmojiHeight/100*48,bitmojiHeight/100*-35);//hair
-
 ellipse(x+bitmojiHeight/100*52,y+bitmojiHeight/100*94,bitmojiHeight/100*25,bitmojiHeight/100*30);//hair
-
 ellipse(x+bitmojiHeight/100*50,y+bitmojiHeight/100*70,bitmojiHeight/100*29,bitmojiHeight/100*-45);//hair
 ellipse(x+bitmojiHeight/100*139,y+bitmojiHeight/100*57,bitmojiHeight/100*29,bitmojiHeight/100*-32);//hair
 ellipse(x+bitmojiHeight/100*142,y+bitmojiHeight/100*80,bitmojiHeight/100*28,bitmojiHeight/100*-39);//hair
@@ -94,18 +147,18 @@ line(x+bitmojiHeight/100*90,y+bitmojiHeight/100*216,x+bitmojiHeight/100*96,y+bit
 };
 var signs =[
     {
-    name:" Pisces",
-    dates:"Feburary 19 - March 20",
-    facts:"You wouldn’t hurt a fly! Empathy is your superpower, and you are an asset to any team you join or cause you support. Your gentleness is a virtue. However, be careful to not let your feelings get hurt too easily. Be sure to spend time building your self‒confidence.",
-    element:"Water",
-    animal:"Fish"
-    },
-    {
     name:"Aquarius",
     dates:"January 20 - Feburary 18",
     facts:"You may fall on the introvert side of the spectrum, but that doesn’t mean you don’t know how to have fun. You have an enviable combination of intelligence and intuition, and you are able to identify positive opportunities even in dark times.",
      element:"Air",
     animal:"Rabbit"
+    },
+      {
+    name:" Pisces",
+    dates:"Feburary 19 - March 20",
+    facts:"You wouldn’t hurt a fly! Empathy is your superpower, and you are an asset to any team you join or cause you support. Your gentleness is a virtue. However, be careful to not let your feelings get hurt too easily. Be sure to spend time building your self‒confidence.",
+    element:"Water",
+    animal:"Fish"
     },
     {
     name:"Aries",
@@ -354,7 +407,7 @@ var libra= new  Button ({
 */
 var showSigns = function (a,index)
 { 
-    image(getImage("cute/Star"), 15, -12, 54,67);
+    image(getImage("cute/Star"), 45, 41, 54,67);
     textAlign(LEFT,TOP);
     fill(56, 14, 56);
     textSize(28);
@@ -388,69 +441,101 @@ var showSigns = function (a,index)
 // members info once clicked
 
 var Aries= function(){
+    currentScene=3;
     noStroke();
-currentScene=3;
-background(255, 255, 255);
-fill(247, 220, 225);
-rect(0,0,400,103);
-showSigns(signs,2);
+    background(255, 255, 255);
+    fill(255, 220, 181);
+    rect(0,0,400,103);
+    showSigns(signs,2);
 };
 
-
 var Taurus = function(){
-currentScene=4;
-background(207, 192, 205);
+    currentScene=4;
+    noStroke();
+    background(255, 255, 255);
+    fill(192, 232, 167);
+    rect(0,0,400,103);
     showSigns(signs,3);
 };
 var Gemini = function(){
-currentScene=5;
-background(207, 192, 205);
-    showSigns(signs,3);
+    currentScene=5;
+    noStroke();
+    background(255, 255, 255);
+    fill(251, 252, 210);
+    rect(0,0,400,103);
+    showSigns(signs,4);
 };
 var Cancer = function(){
-currentScene=6;
-background(207, 192, 205);
-    showSigns(signs,3);
+    currentScene=6;
+    noStroke();
+    background(255, 255, 255);
+    fill(210, 247, 250);
+    rect(0,0,400,103);
+    showSigns(signs,5);
 };
 var Leo = function(){
-currentScene=7;
-background(207, 192, 205);
+    currentScene=7;
+    noStroke();
+    background(255, 255, 255);
+    fill(255, 220, 181);
+    rect(0,0,400,103);
     showSigns(signs2,0);
 };
 var Virgo  = function(){
-currentScene=8;
-background(207, 192, 205);
-    showSigns(signs2,3);
+    currentScene=8;
+    noStroke();
+    background(255, 255, 255);
+    fill(192, 232, 167);
+    rect(0,0,400,103);
+    showSigns(signs2,1);
 };
 var Scorpio = function(){
-currentScene=9;
-background(207, 192, 205);
+    currentScene=9;
+    noStroke();
+    background(255, 255, 255);
+    fill(210, 247, 250);
+    rect(0,0,400,103);
     showSigns(signs2,3);
 };
 var Sag = function(){
-currentScene=10;
-background(207, 192, 205);
-    showSigns(signs2,3);
+    currentScene=10;
+    noStroke();
+    background(255, 255, 255);
+    fill(255, 220, 181);
+    rect(0,0,400,103);
+    showSigns(signs2,4);
 };
 var Cap = function(){
-currentScene=11;
-background(207, 192, 205);
-    showSigns(signs2,3);
+    currentScene=11;
+    noStroke();
+    background(255, 255, 255);
+    fill(192, 232, 167);
+    rect(0,0,400,103);
+    showSigns(signs2,5);
 };
 var Aqua = function(){
-currentScene=12;
-background(207, 192, 205);
-    showSigns(signs,3);
+    currentScene=12;
+    noStroke();
+    background(255, 255, 255);
+    fill(251, 252, 210);
+    rect(0,0,400,103);
+    showSigns(signs,0);
 };
 var Libra = function(){
-currentScene=14;
-background(207, 192, 205);
-    showSigns(signs2,3);
+    currentScene=14;
+    noStroke();
+    background(255, 255, 255);
+    fill(251, 252, 210);
+    rect(0,0,400,103);
+    showSigns(signs2,2);
 };
 var Pisces = function(){
-currentScene=13;
-background(207, 192, 205);
-    showSigns(signs,3);
+    currentScene=13;
+    noStroke();
+    background(255, 255, 255);
+    fill(210, 247, 250);
+    rect(0,0,400,103);
+    showSigns(signs,1);
 }; 
 
 mouseClicked = function() {
@@ -459,13 +544,19 @@ mouseClicked = function() {
         quit.handleMouseClick();
         start.handleMouseClick();
         play.handleMouseClick();}
+    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 130 && mouseY < 150){ currentScene=12; Aqua();}
+    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 170 && mouseY < 200){currentScene=13; Pisces(); }
+    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 220 && mouseY < 250){currentScene=3; Aries(); }
+    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 270 && mouseY < 300){currentScene=4; Taurus();}
+    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 310 && mouseY < 330){currentScene=5; Gemini();}
+    if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 350 && mouseY < 370){currentScene=6; Cancer(); }
          
-    if( mouseX > 200 && mouseX < 380 && mouseY > 130 && mouseY < 150){ currentScene=7; Leo();}
-    if(currentScene===2 && mouseX > 200 && mouseX < 380 && mouseY > 170 && mouseY < 200){currentScene=8; Virgo(); }
-    if(currentScene===2 && mouseX > 200 && mouseX < 380 && mouseY > 220 && mouseY < 250){currentScene=14; Libra(); }
-    if(currentScene===2 && mouseX > 200 && mouseX < 380 && mouseY > 270 && mouseY < 300){currentScene=9; Scorpio();}
-    if(currentScene===2 && mouseX > 200 && mouseX < 380 && mouseY > 310 && mouseY < 330){currentScene=10; Sag();}
-    if(currentScene===2 && mouseX > 200 && mouseX < 380 && mouseY > 350 && mouseY < 370){currentScene=11; Cap(); }
+    if( currentScene===2 && stillPlaying===true &&  mouseX > 200 && mouseX < 380 && mouseY > 130 && mouseY < 150){ currentScene=7; Leo();}
+    if(currentScene===2 && stillPlaying===true &&  mouseX > 200 && mouseX < 380 && mouseY > 170 && mouseY < 200){currentScene=8; Virgo(); }
+    if(currentScene===2 && stillPlaying===true && mouseX > 200 && mouseX < 380 && mouseY > 220 && mouseY < 250){currentScene=14; Libra(); }
+    if(currentScene===2 && stillPlaying===true && mouseX > 200 && mouseX < 380 && mouseY > 270 && mouseY < 300){currentScene=9; Scorpio();}
+    if(currentScene===2 && stillPlaying===true && mouseX > 200 && mouseX < 380 && mouseY > 310 && mouseY < 330){currentScene=10; Sag();}
+    if(currentScene===2 && stillPlaying===true && mouseX > 200 && mouseX < 380 && mouseY > 350 && mouseY < 370){currentScene=11; Cap(); }
 
       
         /*aries.handleMouseClick();
@@ -488,39 +579,44 @@ mouseClicked = function() {
 }
 var splashScreen = function(){
     currentScene=0;
+    stillPlaying = false;
     background(37, 31, 61);
     //Jayda's Bitmoji
     //drawBitmoji(194,203,60);
     // Riss's Bitmoji
-    drawBitmoji(100,248,58);
+    drawBitmojiJ(19,204,50);
+    drawBitmoji(254,248,50);
     fill(255, 255, 255);
     textSize(50);
-    text("ASTEROIDS", 53,40);
+    text("ASTROLOGY", 45,40);
     start.draw();
 };
 var introScene= function()
-{currentScene=1;
- background(37, 31, 61);
-textSize(16);
+{
+    stillPlaying= false;
+    currentScene=1;
+     background(37, 31, 61);
+    textSize(16);
     fill(255, 255, 255);
     text("Hello There! My name is Starry I'm here to guide you on your astrological journey. Down belowo you will have the option to enter my realm or quit. Either way the choice is yours but I do hope you choose to proceed. Have Fun ;)",40,40,300,300);
-imageMode(CENTER);
+    imageMode(CENTER);
     image(getImage("cute/Star"), 300, 300, 100,100);
     quit.draw();
     play.draw();
         
 };
 
-var GameScene= function()
-{currentScene=2;
+var GameScene= function(){   
+    currentScene=2;
+    stillPlaying=true;
     background(229, 255, 230);
-noStroke();
-fill(202,231,193);
-rect(9,9,363,102,19);//bitmoji box
-drawBitmoji(284,9,40);
-fill(128, 89, 55);
-textSize(25);
- text("When is your Birthday?",23,64);
+    noStroke();
+    fill(202,231,193);
+    rect(9,9,363,102,19);//bitmoji box
+    drawBitmoji(284,9,40);
+    fill(128, 89, 55);
+    textSize(25);
+    text("When is your Birthday?",23,64);
      for(var i = 0; i < signs2.length; i++)
  {
      textSize(12);
@@ -548,20 +644,19 @@ textSize(25);
 draw = function() {
     if(currentScene===0){splashScreen();}
     if (currentScene===1){introScene();}
-     if(currentScene===2){GameScene();}
-      else if(currentScene===3){Aries();}
-       else if(currentScene===4){Taurus();} 
-       else if(currentScene===5){Gemini();} 
-       else if(currentScene===6){Cancer();} 
-       else if(currentScene===7){Leo();}
-       else if(currentScene===8){Virgo();}
-       else if(currentScene===9){Scorpio();} 
-       else if(currentScene===10){Sag();}
-       else if(currentScene===11){Cap();} 
-       else if(currentScene===12){Aqua();}
-       else if(currentScene===13){Pisces();}
-        else if(currentScene===14){Libra();}
+    if(currentScene===2){GameScene();}
+    if(currentScene===3){Aries();}
+    if(currentScene===4){Taurus();} 
+    if(currentScene===5){Gemini();} 
+    if(currentScene===6){Cancer();} 
+    if(currentScene===7){Leo();}
+    if(currentScene===8){Virgo();}
+    if(currentScene===9){Scorpio();} 
+    if(currentScene===10){Sag();}
+    if(currentScene===11){Cap();} 
+    if(currentScene===12){Aqua();}
+    if(currentScene===13){Pisces();}
+    if(currentScene===14){Libra();}
       
      
 };
-
