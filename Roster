@@ -1,30 +1,182 @@
-var currentScene = 0;
+/*
+The facts come from Mosiac: Your Guide to the 12 Zodiac Dates & Traits 
+https://www.tenthousandvillages.com/mosaic/your-guide-to-the-12-zodiac-dates-traits/
+
+Animals are from "Hawk, lion or snake — which is the spirit animal for your zodiac sign?" https://www.lifestyleasia.com/ind/astrology/zodiacs/know-the-spirit-animal-for-all-zodiac-signs/#:~:text=Answer%3A%20The%20seven%20zodiac%20signs,sea%20goat%20and%20Pisces%20—%20fish.
+*/
+var currentScene=0;
+var stillPlaying=true;
+var drawBitmoji=function(x,y,bitmojiHeight) // drawing Bitmoji
+{
+   noStroke();
+fill (132, 55, 34);
+ellipse (x+(bitmojiHeight/100*100),y+bitmojiHeight/100*100,bitmojiHeight/100*83,bitmojiHeight/100*100);//head
+fill(255, 255, 255);
+fill(89, 38, 11);
+stroke(232, 185, 35);
+
+
+ellipse(x+bitmojiHeight/100*68,y+bitmojiHeight/100*46,bitmojiHeight/100*48,bitmojiHeight/100*-32);//hair
+
+
+
+ellipse(x+bitmojiHeight/100*97,y+bitmojiHeight/100*68,bitmojiHeight/100*48,bitmojiHeight/100*-35);//hair
+
+ellipse(x+bitmojiHeight/100*119,y+bitmojiHeight/100*(54),bitmojiHeight/100*48,bitmojiHeight/100*-32);//hair
+
+ellipse(x+bitmojiHeight/100*97,y+bitmojiHeight/100*60,bitmojiHeight/100*48,bitmojiHeight/100*-35);//hair
+
+ellipse(x+bitmojiHeight/100*76,y+bitmojiHeight/100*47,bitmojiHeight/100*48,bitmojiHeight/100*-32);//hair
+
+ellipse(x+bitmojiHeight/100*119,y+bitmojiHeight/100*56,bitmojiHeight/100*48,bitmojiHeight/100*-35);//hair
+
+ellipse(x+bitmojiHeight/100*52,y+bitmojiHeight/100*94,bitmojiHeight/100*25,bitmojiHeight/100*30);//hair
+
+ellipse(x+bitmojiHeight/100*50,y+bitmojiHeight/100*70,bitmojiHeight/100*29,bitmojiHeight/100*-45);//hair
+ellipse(x+bitmojiHeight/100*139,y+bitmojiHeight/100*57,bitmojiHeight/100*29,bitmojiHeight/100*-32);//hair
+ellipse(x+bitmojiHeight/100*142,y+bitmojiHeight/100*80,bitmojiHeight/100*28,bitmojiHeight/100*-39);//hair
+ellipse(x+bitmojiHeight/100*76,y+bitmojiHeight/100*68,bitmojiHeight/100*48,bitmojiHeight/100*-32);//hair
+ellipse(x+bitmojiHeight/100*134,y+bitmojiHeight/100*60,bitmojiHeight/100*45,bitmojiHeight/100*-39);//hair
+ellipse(x+bitmojiHeight/100*76,y+bitmojiHeight/100*40,bitmojiHeight/100*48,bitmojiHeight/100*-32);//hair
+ellipse(x+bitmojiHeight/100*97,y+bitmojiHeight/100*43,bitmojiHeight/100*48,bitmojiHeight/100*-35);//hair
+
+ellipse(x+bitmojiHeight/100*118,y+bitmojiHeight/100*48,bitmojiHeight/100*48,bitmojiHeight/100*-32);//hair
+ellipse(x+bitmojiHeight/100*97,y+bitmojiHeight/100*68,bitmojiHeight/100*48,bitmojiHeight/100*-35);//hair
+
+//eyebrows
+stroke(78,53,36);
+noFill();
+arc(x+bitmojiHeight/100*76, y+bitmojiHeight/100*93, bitmojiHeight/100*21, bitmojiHeight/100*-14, 9, 174);
+arc(x+bitmojiHeight/100*118, y+bitmojiHeight/100*92, bitmojiHeight/100*21, bitmojiHeight/100*-14, 9, 174);
+
+//eyes
+fill(98,52,18);
+ellipse(x+bitmojiHeight/100*76,y+bitmojiHeight/100*94,bitmojiHeight/100*6,bitmojiHeight/100*5);
+ellipse(x+bitmojiHeight/100*117,y+bitmojiHeight/100*93,bitmojiHeight/100*4,bitmojiHeight/100*5);
+//nose
+noStroke();
+fill(140, 59, 4);
+arc(x+bitmojiHeight/100*99, y+bitmojiHeight/100*115, bitmojiHeight/100*24, bitmojiHeight/100*-16, -3, 183);
+//headband
+noFill();
+stroke(232, 185, 35);
+arc(x+bitmojiHeight/100*100, y+bitmojiHeight/100*62, bitmojiHeight/100*133, bitmojiHeight/100*-11, 174, 323);
+
+//lips
+noStroke();
+fill(201,130,118);
+arc(x+bitmojiHeight/100*99, y+bitmojiHeight/100*128, bitmojiHeight/100*19, bitmojiHeight/100*-8, -3, 183);//top
+arc(x+bitmojiHeight/100*99, y+bitmojiHeight/100*128, bitmojiHeight/100*23, bitmojiHeight/100*11, -3, 183);//bottom
+
+// earrings
+stroke(232, 185, 35);
+noFill();
+arc (x+bitmojiHeight/100*57, y+bitmojiHeight/100*113, bitmojiHeight/100*7, bitmojiHeight/100*18,-16, 358);
+arc (x+bitmojiHeight/100*143, y+bitmojiHeight/100*109, bitmojiHeight/100*6, bitmojiHeight/100*18, -55, 401);
+
+// body
+fill (132, 55, 34);
+noStroke();
+arc(x+bitmojiHeight/100*103, y+bitmojiHeight/100*204, bitmojiHeight/100*104, bitmojiHeight/100*-96, 4, 177);//body
+rect(x+bitmojiHeight/100*92, y+bitmojiHeight/100*146, bitmojiHeight/100*19, bitmojiHeight/100*16, bitmojiHeight/100*80);//neck
+
+//shirt
+fill(13, 13, 13);
+arc(x+bitmojiHeight/100*103, y+bitmojiHeight/100*186, bitmojiHeight/100*111, bitmojiHeight/100*83, 3, 180);
+//necklace
+noFill();
+stroke(232, 185, 35);
+arc(x+bitmojiHeight/100*103, y+bitmojiHeight/100*157, bitmojiHeight/100*32, bitmojiHeight/100*42, 0, 180);
+arc(x+bitmojiHeight/100*103, y+bitmojiHeight/100*163, bitmojiHeight/100*32, bitmojiHeight/100*51,0, 180);
+arc(x+bitmojiHeight/100*102, y+bitmojiHeight/100*195, bitmojiHeight/100*15, bitmojiHeight/100*-14, -464, -195);
+line(x+bitmojiHeight/100*106,y+bitmojiHeight/100*216,x+bitmojiHeight/100*95,y+bitmojiHeight/100*201);//slash in r
+line(x+bitmojiHeight/100*90,y+bitmojiHeight/100*216,x+bitmojiHeight/100*96,y+bitmojiHeight/100*193);//long r
+};
 var signs =[
     {
+    name:" Pisces",
+    dates:"Feburary 19 - March 20",
+    facts:"You wouldn’t hurt a fly! Empathy is your superpower, and you are an asset to any team you join or cause you support. Your gentleness is a virtue. However, be careful to not let your feelings get hurt too easily. Be sure to spend time building your self‒confidence.",
+    element:"Water",
+    animal:"Fish"
+    },
+    {
+    name:"Aquarius",
+    dates:"January 20 - Feburary 18",
+    facts:"You may fall on the introvert side of the spectrum, but that doesn’t mean you don’t know how to have fun. You have an enviable combination of intelligence and intuition, and you are able to identify positive opportunities even in dark times.",
+     element:"Air",
+    animal:"Rabbit"
+    },
+    {
+    name:"Aries",
+    dates:"March 21 - April 19",
+    facts:"Independent and strong‒willed, you are a force to be reckoned with! You love nothing more than an exciting new goal to tackle, and you do your best work when you’re flying solo. Your passion and energy keep the rest of us on our toes",
+     element:"Fire",
+     animal:"Hawk"
+    },
+    {
+    name:"Taurus",
+    dates:"April 20 - May 20",
+    facts:"As a Taurus, you’re a wonderful combination of laid‒back and hard‒working. You’re honest and loyal, occasionally to a fault. Your determination and attention to detail will take you far in life.",
+     element:"Earth",
+    animal:"Bear"
+    },
+    {
+    name:"Gemini",
+    dates:"May 21 - June 20",
+    facts:"Your ability to get along with a wide variety of people makes you a bit of a social butterfly, but you’ll take advantage of some alone time when it comes your way. Curious and deeply emotional, you love ritual and celebration.",
+     element:"Air",
+    animal:"Butterfly"
+    },
+    {
+    name:" Cancer",
+    dates:"June 21 - July 22",
+    facts:"Your intuition is downright uncanny! You do your best socializing in small groups and prefer intimate relationships even if it means your social circle is on the smaller side. Your creative spirit will bring joy to all you meet.",
+     element:"Water",
+    animal:"Moose"
+    },
+    {
     name: "Leo",
-    dates: "July 23 - August 22"
+    dates: "July 23 - August 22",
+    facts:"It’s no wonder your symbol is a lion. Your personality and presence are impressive to all. This may intimidate some, but your inviting spirit will help you easily make friends. Your confidence will be an asset to you throughout your life.",
+     element:"Fire",
+    animal:"Lion"
     },
     {
     name: "Virgo",
-    dates: "August 23 - September 22"
+    dates: "August 23 - September 22",
+    facts:"You are the picture of poise and elegance. You love to stay organized and have a strong focus on keeping things aesthetic. But you’re not just beauty. You’ve got brains, too! You’ll continue seeking knowledge and intellectual growth as you age.",
+     element:"Earth",
+    animal:"Fox"
     },
     {
     name: "Libra",
-    dates: "September 23 - October 22"
+    dates: "September 23 - October 22",
+    facts:"You have a large social circle, and your open‒mindedness helps you get along with just about anyone. But don’t get lost in the crowd! A focus on self‒care and personal reflection will help you build your confidence over time.",
+     element:"Air",
+    animal:"Swan" 
     },
     {
     name: "Scorpio",
-    dates: "October 23 - November 21"
+    dates: "October 23 - November 21",
+    facts:"As a Scorpio, you can have a sharp edge, but this isn’t always a negative quality. It gives you an appreciation for authenticity and a strong sense of independence. However, you’re not always as tough as you appear. Once you let people into your life, you’re a bit of a softy.",
+     element:"Water",
+    animal:"Snake"
     },
     {
     name: "Sagittarius",
-    dates: "November 22 - December 21"
+    dates: "November 22 - December 21",
+    facts: "The road less traveled is your favorite place to be! Your bravery is admirable and will make you a good fit for leadership roles. You also have a bit of an itch in your shoes and will always be ready to take on a new adventure. ",
+     element:"Fire",
+    animal:"Red Panda"
     },
     {
     name: "Capricorn",
-    dates: "December 22 - January 19"
+    dates: "December 22 - January 19",
+    facts:"Your perfectionism and high standards, though sometimes an obstacle, can be one of your superpowers when handled wisely. You have a strong sense of self, which enables you to make meaningful connections and lead the way.",
+     element:"Earth",
+    animal:"Wolf"
     }];
-//Khan Button Class
 
 var Button = function(config) {
     this.x = config.x || 0;
@@ -34,22 +186,21 @@ var Button = function(config) {
     this.label = config.label || "Click";
     this.onClick = config.onClick || function() {};
 };
-
 Button.prototype.draw = function() {
     noStroke();
+     fill(0, 100, 0);
+    rect(this.x, this.y, this.width, this.height, 9);
     fill(255, 255, 255);
-    rect(this.x, this.y, this.width, this.height, 3);
-    fill(94, 26, 128);
-    textSize(41);
+    textSize(32);
     textAlign(LEFT, TOP);
-    text(this.label, this.x+32, this.y+this.height/50);
+    text(this.label, this.x+32, this.y+this.height/14);
 };
 
 Button.prototype.isMouseInside = function() {
-    return mouseX > this.x &&
-           mouseX < (this.x + this.width) &&
-           mouseY > this.y &&
-           mouseY < (this.y + this.height);
+    return mouseX >= this.x &&
+           mouseX <= (this.x + this.width) &&
+           mouseY >= this.y &&
+           mouseY <= (this.y + this.height);
 };
 
 Button.prototype.handleMouseClick = function() {
@@ -58,69 +209,282 @@ Button.prototype.handleMouseClick = function() {
     }
 };
 
+
 var start = new Button({
-    x: 118,
-    y: 190,
-    label: "start",
+    x: 117,
+    y: 117,
+    label: "Start!",
     onClick: function() {
-       currentScene =1;
+        currentScene=1;
         
     }
 });
 
-  
-//First Screen 
-var splashScreen = function (){
+var quit = new  Button ({
+    x: 200,
+    y: 200,
+    label: "Quit",
+    onClick: function(){
+        currentScene = 0;
+
+    }
+});
+var play = new  Button ({
+    x: 20,
+    y: 200,
+    label: "Play",
+    onClick: function(){
+        currentScene = 2;
+
+    }
+});
+// something wrong with Aries button
+var ariesSign = new  Button ({
+    x: 20,
+    y: 150,
+    label: "Aries",
+    onClick: function(){
+        currentScene = 3;
+
+    }
+});
+var taurus = new  Button ({
+    x: 20,
+    y: 200,
+    label: "Taurus",
+    onClick: function(){
+        currentScene = 4;
+
+    }
+});
+var gemini = new  Button ({
+    x:20,
+    y:250 ,
+    label: "Gemini",
+    onClick: function(){
+        currentScene = 5;
+
+    }
+});
+var cancer = new  Button ({
+    x: 20,
+    y:300 ,
+    label: "Cancer",
+    onClick: function(){
+        currentScene = 6;
+
+    }
+});
+var leo = new  Button ({
+    x: 20,
+    y: 350,
+    label: "Leo",
+    onClick: function(){
+        currentScene = 7;
+
+    }
+});
+var virgo = new  Button ({
+    x: 20,
+    y: 100,
+    label: "Virgo",
+    onClick: function(){
+        currentScene = 8;
+
+    }
+});
+
+var scorpio = new  Button ({
+    x: 200,
+    y: 150,
+    label: "Scorpio",
+    onClick: function(){
+        currentScene = 9;
+
+    }
+});
+var sag = new  Button ({
+    x: 200,
+    y:200 ,
+    label: "Sagittarius",
+    onClick: function(){
+        currentScene = 10;
+
+    }
+});
+var capir = new  Button ({
+    x:200 ,
+    y: 250,
+    label: "Capricorn",
+    onClick: function(){
+        currentScene = 11;
+
+    }
+});
+var aqua = new  Button ({
+    x:200,
+    y:350,
+    label: "Aquarius",
+    onClick: function(){
+        currentScene = 12;
+
+    }
+});
+var pisces = new  Button ({
+    x:200 ,
+    y: 300,
+    label: "Pisces",
+    onClick: function(){
+        currentScene = 13;
+
+    }
+});
+var libra= new  Button ({
+    x:200,
+    y:150,
+    label: "Libra",
+    onClick: function(){
+        currentScene =14 ;
+
+    }
+});
+var showSigns = function (a,index)
+{ 
+    textAlign(LEFT,TOP);
+    fill(255, 252, 255);
+    textSize(12);
+    text("Sign: " + a[index].name + "  ",17,260);
+    text("Date: " +a[index].dates,17,350);
+    text("Sign Description: " +a[index].facts,17,280);
+    text("Animal Representation: " +a[index].animal,17,310);
+    /*image(a[index].image,249,196,128,97);
+    text("Rating: ", 17, 325);
+    for (var i = 0; i < a[index].rating; i++)
+    {
+        image(getImage("cute/GemGreen"), (i*30) + 80, 320, 35, 30);
+    }*/
+};
+
+// members info once clicked
+
+
+mouseClicked = function() {
+     {
+        quit.handleMouseClick();
+        start.handleMouseClick();
+        play.handleMouseClick();
+       
+       //ariesSign.handleMouseClick();
+        taurus.handleMouseClick();
+        gemini.handleMouseClick();
+        cancer.handleMouseClick();
+        leo.handleMouseClick();
+        virgo.handleMouseClick();
+        scorpio.handleMouseClick();
+        sag.handleMouseClick();
+        capir.handleMouseClick();
+        aqua.handleMouseClick();
+        pisces.handleMouseClick();
+        libra.handleMouseClick();
+        
+     }};
+        {
+   /* if (mouseX>=1 && mouseX<=130&&mouseY>= 25&&mouseY<=50)
+    {
+      stroke(255, 215, 0);
+      fill(195, 177, 225);
+      currentScene=4;
+      showMembers(signs,0);
+    }
+    else if 
+     (mouseX>=1 && mouseX<=130&&mouseY>= 43&&mouseY<=63)
+    {
+      stroke(255, 215, 0);
+      fill(250, 200, 152);
+       currentScene=3;
+      showMembers(signs,1);
+    }
+    else if 
+     (mouseX>=1 && mouseX<=130&&mouseY>= 64&&mouseY<=84)
+    {
+      stroke(255, 215, 0);
+      fill(131,105,83);
+    rect(-10,170,434,369,355);
+      showMembers(signs,2);
+    }
+    else if 
+     (mouseX>=1 && mouseX<=106&&mouseY>= 85&&mouseY<=105)
+    {
+      stroke(255, 215, 0);
+      fill(167, 199, 231);
+     currentScene=5;
+      showMembers(signs,3);
+    }*/
+
+}
+var splashScreen = function(){
     currentScene=0;
-    background(192, 161, 227);
-    fill(94, 26, 128);
-    textSize(75);
-    text("Astrology ",38,39);
+    background(37, 31, 61);
+    //Jayda's Bitmoji
+    //drawBitmoji(194,203,60);
+    // Riss's Bitmoji
+    drawBitmoji(100,248,58);
+    fill(255, 255, 255);
     textSize(50);
-    text("Questionaire", 42,122);
+    text("ASTEROIDS", 53,40);
     start.draw();
 };
-
-//Second Scene  
-var Questionaire = function () {
-    currentScene=1;
-    background(255, 255, 255);
-    noStroke();
-    fill(192, 161, 227);
-    rect(0,0,400,94);
-    fill(94, 26, 128);
-    textSize(30);
-    text("When is your Birthday?",41,35);
-    for(var i = 0; i < signs.length; i++)
- {
-     textSize(12);
-     text(signs[i].dates,205,i*45 + 133);
- }
-    
-};
-      
-var answerScreen = function (a, index){
-    currentScene = 2;
-    background(255, 255, 255);
-    fill(161, 127, 201);
-    rect(0,0,400,140);   
-    fill(192, 161, 227);
-    rect(20,20,360,100);
-    fill(94, 26, 128);
-    textSize(30);
-   text("Your sign is"+ a[index].name,30,30);  //// this is whats causing the issue but i cant figure it out???
-  
- 
+var introScene= function()
+{currentScene=1;
+ background(37, 31, 61);
+textSize(16);
+    fill(255, 255, 255);
+    text("Hello There! My name is Starry I'm here to guide you on your astrological journey. Down belowo you will have the option to enter my realm or quit. Either way the choice is yours but I do hope you choose to proceed. Have Fun ;)",40,40,300,300);
+imageMode(CENTER);
+    image(getImage("cute/Star"), 300, 300, 100,100);
+    quit.draw();
+    play.draw();
+        
 };
 
-var mouseClicked = function (){
-    start.handleMouseClick();
-    
-    if(currentScene===1 && mouseX > 200 && mouseX < 380 && mouseY > 130 && mouseY < 150){currentScene=2; answerScreen(signs,0);}
-};  
+var GameScene= function()
+{currentScene=2;
+    background(247, 220, 225);
+noStroke();
+fill(202,231,193);
+rect(248,10,150,133,130);//bitmoji box
+drawBitmoji(284,9,45);
+fill(0, 0, 0);
+textSize(25);
+ text("When is your Birthday?",3,18);
+        taurus.draw();
+        gemini.draw();
+        cancer.draw();
+        leo.draw();
+        virgo.draw();
+        scorpio.draw();
+        sag.draw();
+        capir.draw();
+        aqua.draw();
+        pisces.draw();
+        libra.draw();   
+};
 
-draw= function() {
+var aries= function(){
+currentScene=3;
+background(255, 0, 0);
+   showSigns(signs,10);
+};
+
+var Taurus = function(){
+currentScene=5;
+background(207, 192, 205);
+    showSigns(signs,1);
+};
+draw = function() {
     if(currentScene===0){splashScreen();}
-    if(currentScene===1){Questionaire();}
-    if(currentScene===2){answerScreen();}
+    if (currentScene===1){introScene();}
+     if(currentScene===2){GameScene();}
+      if(currentScene===3){aries();}
+     
 };
