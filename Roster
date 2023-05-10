@@ -566,6 +566,9 @@ var GameScene= function(){
     noStroke();
     fill(202,231,193);
     rect(9,9,363,102,19);//bitmoji box
+     textSize(10);
+    fill(128, 89, 55);
+    text("When finished click on me!",174,20,173,45);
     drawBitmoji(284,9,40);
     fill(128, 89, 55);
     textSize(25);
