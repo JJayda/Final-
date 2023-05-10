@@ -5,6 +5,8 @@ https://www.tenthousandvillages.com/mosaic/your-guide-to-the-12-zodiac-dates-tra
 Animals are from "Hawk, lion or snake — which is the spirit animal for your zodiac sign?" https://www.lifestyleasia.com/ind/astrology/zodiacs/know-the-spirit-animal-for-all-zodiac-signs/#:~:text=Answer%3A%20The%20seven%20zodiac%20signs,sea%20goat%20and%20Pisces%20—%20fish.
 
 colors are from:https://artincontext.org/zodiac-colors/#:~:text=Each%20zodiac%20sign%20has%20a,as%20the%20zodiac%20color%20chart.
+
+Horoscopes come from:https://astrostyle.com/horoscopes/monthly/
 */
 // Global Variables
 var currentScene=0;
@@ -192,7 +194,7 @@ var signs =[
     {
     name:"Aries",
     dates:"March 21 - April 19",
-    facts:"     Independent and strong‒willed, you are a force to be reckoned with! You love nothing more than an exciting new goal to tackle, and you do your best work when you’re flying solo. Your passion and energy keep the rest of us on our toes",
+    facts:"  Independent and strong‒willed, you are a force to be reckoned with! You love nothing more than an exciting new goal to tackle, and you do your best work when you’re flying solo. Your passion and energy keep the rest of us on our toes",
      element:"Fire",
      animal:"Hawk"
     },
@@ -260,6 +262,79 @@ var signs2 =[
      element:"Earth",
     animal:"Wolf"
     }];
+    
+var horoscope =[
+    {
+    name:"Aquarius",
+    dates:"January 20 - Feburary 18",
+    facts:"Settling in to all the changes yet, Aquarius? There are more to come, but this month you can start to adapt to a few “new normal” settings—or at least slow down for some R+R to integrate it all. Until May 21, the Sun is in Taurus and your fourth house of home, family and roots.",
+    },
+      {
+    name:" Pisces",
+    dates:"Feburary 19 - March 20",
+    facts:"Just say it, Pisces…wait, no don’t! With the Taurus Sun heating up your communication house until May 21, you’re feeling extra chatty. But Mercury, the planet of expression and ideas, is retrograde in Taurus until May 14, imposing an emergency gag order on those edgy comments, which are almost certain to be misunderstood.",
+   
+    },
+    {
+    name:"Aries",
+    dates:"March 21 - April 19",
+    facts:"May is a transitional month—and an important one for you, Aries. The first two weeks mark the grand finale of expansive Jupiter’s once-every-12-years visit to your sign, a cycle that began back in May 2022. Since then, your hosting duties have attracted everything from astounding luck to fresh starts that took your life in an accelerated new direction!",
+    },
+    {
+    name:"Taurus",
+    dates:"April 20 - May 20",
+    facts:"At last, at last! The month you’ve been waiting for (whether you know it or not) has FINALLY arrived. On May 16, Jupiter, the planet of luck and new horizons, will make a lively landfall in Taurus, blessing the Bulls with bold new beginnings until May 25, 2024. ",
+    
+    },
+    {
+    name:"Gemini",
+    dates:"May 21 - June 20",
+    facts:"Costume change! The movie of your life will make a dramatic scene shift mid-May, kicking off a transitional 12-month cycle. It all begins when Jupiter, the planet of expansion, settles into Taurus and your twelfth house of closure and endings, from May 16, 2023 until May 25, 2024.",
+    },
+    {
+    name:" Cancer",
+    dates:"June 21 - July 22",
+    facts:"Is your energy coming back more and more each day, Cancer? For the past few weeks, you’ve been in “reboot” mode after a long seven-month period that took your vitality a bit offline. Your revival started on March 25, when energizer Mars blazed into your sign, jolting you out of a sluggish cycle. ",
+    },
+    {
+    name: "Leo",
+    dates: "July 23 - August 22",
+    facts:"Ready to turn one or two of those big ideas into something solid? Start your engines, Leo! With the Sun in Taurus and your success-driven tenth house until May 21, the wheels are turning. But in the second half of the month, there’s an even bigger shift toward the concrete, which helps you turn inspiration into a tangible venture—one you’ll want to stick with for the long term! ",
+  
+    },
+    {
+    name: "Virgo",
+    dates: "August 23 - September 22",
+    facts:"One ticket to freedom, please! This month, particularly the second half, shifts your worldview from tunnel vision to wide-angle and FULL of possibilities. The Sun is in Taurus and your expansive ninth house until May 21, which has already got your optimism percolating. But on May 16, lucky Jupiter will begin a yearlong visit to Taurus, doubling your fortune and opportunity all the way through May 25, 2024.  ",
+    },
+    {
+    name: "Libra",
+    dates: "September 23 - October 22",
+    facts:"You’re the sign of partnership, Libra, but you’re also born under the air element, so you prefer to keep a certain breezy distance when possible. But not this month! The Sun is in Taurus and your intimate, entwining eighth house until May 21, plunging you into the depths of every encounter. On top of that, communication planet Mercury is retrograde in Taurus through May 14, which could bring old flames and entanglements back into your sphere",
+    },
+    {
+    name: "Scorpio",
+    dates: "October 23 - November 21",
+    facts:"It’s a major turning point month for you, Scorpio! Among the highlights is the May 5 Scorpio lunar (full moon) eclipse, which will sweep through your first house of self and identity. This is the final eclipse in your sign and the second-to-last in a series that’s electrified the Taurus/Scorpio axis and revolutionized the balance between yourself and your relationships since November 2021. This lunar lift could be your cosmic coming-out party, so don’t be surprised if the spotlight finds you and demands your presence without notice. Step into it and let the world see your talents!",
+    },
+    {
+    name: "Sagittarius",
+    dates: "November 22 - December 21",
+    facts: "Change is in the air! This month, your ruling planet, Jupiter, makes its annual zodiac sign change, rolling out of Aries and your flamboyant fifth house on May 16, where it’s been for a year, and moving into earthy Taurus and your wellness sector until May 25, 2024. This is a particularly noticeable shift as the mood turns from celebratory and colorful to a more serious, get ‘er done mode. But you might be ready to buckle down now, Sagittarius. You’ve got some big, bold ideas that you’re ready to build!",
+ 
+    },
+    {
+    name: "Capricorn",
+    dates: "December 22 - January 19",
+    facts:"Spring fever is about to catch fire for you, Capricorn! But will it be someone new, the one you’re with, or…a person from your past? With the Sun in Taurus heating up your passionate and pleasure-seeking fifth house until May 21, you could have your pick of admirers. But Mercury retrograde in Taurus until May 14 can cross a few wires (drama alert!) or even reignite an old flame. Proceed with caution but don’t write it off as a possibility if the last attempt was simply a matter of bad timing.",
+
+    }];    
+    
+    
+    
+    
+    
+    
 // Khan Button Class
 var Button = function(config) {
     currentScene=0;
@@ -329,7 +404,7 @@ var play = new  Button ({
 });
 // After selecting a sign you can use the back button if you want to see a different sign.
 var back = new  Button ({
-    x: 150,
+    x: 100,
     y: 65,
     label: "Back",
     onClick: function(){
@@ -338,7 +413,121 @@ var back = new  Button ({
     }
 });
 
+var nextTaurus = new  Button ({
+    x: 250,
+    y: 65,
+    label: "Next",
+    onClick: function(){
+        currentScene = 17;
 
+    }
+});
+var nextAries = new  Button ({
+    x: 250,
+    y: 65,
+    label: "Next",
+    onClick: function(){
+        currentScene = 16;
+
+    }
+});
+var nextGemini = new  Button ({
+    x: 250,
+    y: 65,
+    label: "Next",
+    onClick: function(){
+        currentScene = 18;
+
+    }
+});
+
+var nextCancer = new  Button ({
+    x: 250,
+    y: 65,
+    label: "Next",
+    onClick: function(){
+        currentScene = 19;
+
+    }
+});
+
+var nextLeo = new  Button ({
+    x: 250,
+    y: 65,
+    label: "Next",
+    onClick: function(){
+        currentScene = 20;
+
+    }
+});
+
+var nextVirgo = new  Button ({
+    x: 250,
+    y: 65,
+    label: "Next",
+    onClick: function(){
+        currentScene = 21;
+
+    }
+});
+
+var nextScorpio = new  Button ({
+    x: 250,
+    y: 65,
+    label: "Next",
+    onClick: function(){
+        currentScene = 22;
+
+    }
+});
+
+var nextSag = new  Button ({
+    x: 250,
+    y: 65,
+    label: "Next",
+    onClick: function(){
+        currentScene = 23;
+
+    }
+});
+
+var nextCap = new  Button ({
+    x: 250,
+    y: 65,
+    label: "Next",
+    onClick: function(){
+        currentScene = 24;
+
+    }
+});
+
+var nextAqua = new  Button ({
+    x: 250,
+    y: 65,
+    label: "Next",
+    onClick: function(){
+        currentScene = 25;
+
+    }
+});
+var nextLibra = new  Button ({
+    x: 250,
+    y: 65,
+    label: "Next",
+    onClick: function(){
+        currentScene = 26;
+
+    }
+});
+var nextPisces = new  Button ({
+    x: 250,
+    y: 65,
+    label: "Next",
+    onClick: function(){
+        currentScene = 27;
+
+    }
+});
 // Organizes and formats the information stored in the object
 var showSigns = function (a,index)
 { 
@@ -355,7 +544,19 @@ var showSigns = function (a,index)
     text("The Animal your sign represents is a " +a[index].animal,55,347);
     
 };
-
+var showHoroscope = function (a,index)
+{ 
+    image(getImage("cute/Key"), 45, 41, 54,67);
+    textAlign(LEFT,TOP);
+    fill(56, 14, 56);
+    textSize(28);
+    text("Your sign is " + a[index].name + " ! ",77,33);
+    textSize(15);
+    text(" Description:",145,127);
+    text( a[index].dates,8,111,327,300);
+     text( a[index].facts,35,150,327,300);
+    
+};
 // members info once clicked
 
 var Aries= function(){
@@ -365,11 +566,22 @@ var Aries= function(){
     fill(255,105,97);
     rect(0,0,400,103);
     showSigns(signs,2);
+         nextAries.draw();
+
+    
+};
+var AriesH= function(){
+    currentScene=16;
+    noStroke();
+    background(255, 255, 255);
+    fill(255,105,97);
+    rect(0,0,400,103);
+    textSize(12);
+    showHoroscope(horoscope,2);
         back.draw();
 
     
 };
-
 var Taurus = function(){
     currentScene=4;
     noStroke();
@@ -377,6 +589,17 @@ var Taurus = function(){
     fill(192, 232, 167);
     rect(0,0,400,103);
     showSigns(signs,3);
+   nextTaurus.draw();
+    
+};
+var TaurusH = function(){
+    stillPlaying=true;
+    currentScene=17;
+    noStroke();
+    background(255, 255, 255);
+    fill(192, 232, 167);
+    rect(0,0,400,103);
+    showHoroscope(horoscope,3);
     back.draw();
 };
 var Gemini = function(){
@@ -386,7 +609,16 @@ var Gemini = function(){
     fill(255, 255, 204);
     rect(0,0,400,103);
     showSigns(signs,4);
-    back.draw();
+    nextGemini.draw();
+};
+var GeminiH = function(){
+    currentScene=18;
+    noStroke();
+    background(255, 255, 255);
+    fill(255, 255, 204);
+    rect(0,0,400,103);
+    showHoroscope(horoscope,4);
+     back.draw();
 };
 var Cancer = function(){
     currentScene=6;
@@ -395,6 +627,15 @@ var Cancer = function(){
     fill(204, 204, 204);
     rect(0,0,400,103);
     showSigns(signs,5);
+    nextCancer.draw();
+};
+var CancerH = function(){
+    currentScene=19;
+    noStroke();
+    background(255, 255, 255);
+    fill(204, 204, 204);
+    rect(0,0,400,103);
+    showHoroscope(horoscope,5);
     back.draw();
 };
 var Leo = function(){
@@ -404,6 +645,15 @@ var Leo = function(){
     fill(230, 204, 153);
     rect(0,0,400,103);
     showSigns(signs2,0);
+    nextLeo.draw();
+};
+var LeoH = function(){
+    currentScene=20;
+    noStroke();
+    background(255, 255, 255);
+    fill(230, 204, 153);
+    rect(0,0,400,103);
+    showHoroscope(horoscope,6);
     back.draw();
 };
 var Virgo  = function(){
@@ -413,6 +663,15 @@ var Virgo  = function(){
     fill(204, 153, 102);
     rect(0,0,400,103);
     showSigns(signs2,1);
+    nextVirgo.draw();
+};
+var VirgoH  = function(){
+    currentScene=21;
+    noStroke();
+    background(255, 255, 255);
+    fill(204, 153, 102);
+    rect(0,0,400,103);
+    showHoroscope(horoscope,7);
     back.draw();
 };
 var Scorpio = function(){
@@ -422,6 +681,15 @@ var Scorpio = function(){
     fill(210, 247, 250);
     rect(0,0,400,103);
     showSigns(signs2,3);
+    nextScorpio.draw();
+};
+var ScorpioH = function(){
+    currentScene=22;
+    noStroke();
+    background(255, 255, 255);
+    fill(210, 247, 250);
+    rect(0,0,400,103);
+    showHoroscope(horoscope,9);
     back.draw();
 };
 var Sag = function(){
@@ -431,6 +699,15 @@ var Sag = function(){
     fill(221, 204, 255);
     rect(0,0,400,103);
     showSigns(signs2,4);
+    nextSag.draw();
+};
+var SagH = function(){
+    currentScene=23;
+    noStroke();
+    background(255, 255, 255);
+    fill(221, 204, 255);
+    rect(0,0,400,103);
+    showHoroscope(horoscope,10);
     back.draw();
 };
 var Cap = function(){
@@ -440,6 +717,15 @@ var Cap = function(){
     fill(204, 204, 204);
     rect(0,0,400,103);
     showSigns(signs2,5);
+    nextCap.draw();
+};
+var CapH = function(){
+    currentScene=24;
+    noStroke();
+    background(255, 255, 255);
+    fill(204, 204, 204);
+    rect(0,0,400,103);
+    showHoroscope(horoscope,11);
     back.draw();
 };
 var Aqua = function(){
@@ -449,6 +735,15 @@ var Aqua = function(){
     fill(204, 229, 255);
     rect(0,0,400,103);
     showSigns(signs,0);
+    nextAqua.draw();
+};
+var AquaH = function(){
+    currentScene=25;
+    noStroke();
+    background(255, 255, 255);
+    fill(204, 229, 255);
+    rect(0,0,400,103);
+    showHoroscope(horoscope,0);
     back.draw();
 };
 var Libra = function(){
@@ -458,6 +753,15 @@ var Libra = function(){
     fill(255, 204, 204);
     rect(0,0,400,103);
     showSigns(signs2,2);
+    nextLibra.draw();
+};
+var LibraH = function(){
+    currentScene=26;
+    noStroke();
+    background(255, 255, 255);
+    fill(255, 204, 204);
+    rect(0,0,400,103);
+    showHoroscope(horoscope,8);
     back.draw();
 };
 var Pisces = function(){
@@ -467,9 +771,17 @@ var Pisces = function(){
     fill(144, 238, 144);
     rect(0,0,400,103);
     showSigns(signs,1);
-    back.draw();
+    nextPisces.draw();
 }; 
-//end Screen 
+var PiscesH = function(){
+    currentScene=27;
+    noStroke();
+    background(255, 255, 255);
+    fill(144, 238, 144);
+    rect(0,0,400,103);
+    showHoroscope(horoscope,1);
+  back.draw();
+}; 
 //end Screen 
 var endScene = function()
 {
@@ -487,11 +799,14 @@ var endScene = function()
 
 };
 
+
+
+
+
 mouseClicked = function() {
     // When mouse is pressed Metal chime will play. For the individual Zodiac Signs a water bubble sound will play.
      playSound(getSound("rpg/metal-chime"));
-    back.handleMouseClick();
-    {
+    {back.handleMouseClick();
         if(currentScene===0){
         start.handleMouseClick();
        }
@@ -521,7 +836,33 @@ mouseClicked = function() {
       playSound(getSound("rpg/metal-chime"));
         
      }
-     
+      if (currentScene=== 3)
+    {nextAries.handleMouseClick();}
+     if (currentScene=== 4)
+    {nextTaurus.handleMouseClick();}
+     if (currentScene=== 5)
+    {nextGemini.handleMouseClick();}
+     if (currentScene=== 6)
+    {nextCancer.handleMouseClick();}
+     if (currentScene=== 7)
+     {nextLeo.handleMouseClick();}
+      if (currentScene=== 8)
+     {nextVirgo.handleMouseClick();}
+      if (currentScene=== 9)
+       {nextScorpio.handleMouseClick();}
+        if (currentScene=== 11)
+        {nextCap.handleMouseClick();}
+         if (currentScene=== 10)
+       {nextSag.handleMouseClick();}
+        if (currentScene=== 12){
+       nextAqua.handleMouseClick();}
+       if (currentScene=== 14){
+    nextLibra.handleMouseClick();}
+    if (currentScene===13){
+      nextPisces.handleMouseClick();
+    }
+    
+    
 };
         
 var splashScreen = function(){
@@ -546,6 +887,7 @@ text("Hello There! Our names are Riss and Jayda! We're here to guide you on your
 // defines what Astrology is 
 var introScene= function()
 {   currentScene=1;
+stillPlaying=false;
      background(37, 31, 61);
     textSize(16);
     fill(255, 255, 255);
@@ -557,10 +899,6 @@ var introScene= function()
         
 };
 
-
-
-
-
 // Has all the dates listed.
 var GameScene= function(){   
     currentScene=2;
@@ -569,9 +907,6 @@ var GameScene= function(){
     noStroke();
     fill(202,231,193);
     rect(9,9,363,102,19);//bitmoji box
-     textSize(10);
-    fill(128, 89, 55);
-    text("When finished click on me!",174,20,173,45);
     drawBitmoji(284,9,40);
     fill(128, 89, 55);
     textSize(25);
@@ -588,6 +923,7 @@ var GameScene= function(){
  }
 };
 
+// Has all the dates listed.
 // Only Draw function in the program, if there are multiple Draw functions one will get over wrriten and not run properly.
 draw = function() {
     if(currentScene===0){splashScreen();}
@@ -606,7 +942,17 @@ draw = function() {
     if(currentScene===13){Pisces();}
     if(currentScene===14){Libra();}
     if(currentScene===15){endScene();}
-      
-     
+    if(currentScene===16){AriesH();}
+    if(currentScene===17){TaurusH();} 
+    if(currentScene===18){GeminiH();} 
+    if(currentScene===19){CancerH();} 
+    if(currentScene===20){LeoH();}
+    if(currentScene===21){VirgoH();}
+    if(currentScene===22){ScorpioH();} 
+    if(currentScene===23){SagH();}
+    if(currentScene===24){CapH();} 
+    if(currentScene===25){AquaH();}
+    if(currentScene===27){PiscesH();}
+    if(currentScene===26){LibraH();}
+        
 };
-
