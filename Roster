@@ -338,6 +338,7 @@ var back = new  Button ({
     }
 });
 
+
 // Organizes and formats the information stored in the object
 var showSigns = function (a,index)
 { 
@@ -468,6 +469,20 @@ var Pisces = function(){
     showSigns(signs,1);
     back.draw();
 }; 
+//end Screen 
+var endScene = function()
+{
+    currentScene=15;
+    fill(255, 255, 255);
+    background (168, 164, 104);
+    textSize(25);
+    text ("Thank You!", 200,200);
+    textSize(30);
+    drawBitmojiJ(160,54,50);
+    drawBitmoji(20,54,50);
+    stars();
+
+};
 
 mouseClicked = function() {
     // When mouse is pressed Metal chime will play. For the individual Zodiac Signs a water bubble sound will play.
@@ -481,6 +496,9 @@ mouseClicked = function() {
         quit.handleMouseClick();
         play.handleMouseClick();
         }
+         if(currentScene===2 && stillPlaying===true && mouseX > 300&& mouseX < 370 && mouseY > 10 && mouseY < 100){ currentScene=15; endScene();
+     playSound(getSound("rpg/water-bubble"));
+    }
     if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 130 && mouseY < 150){ currentScene=12; Aqua();
      playSound(getSound("rpg/water-bubble"));
     }
@@ -535,6 +553,11 @@ var introScene= function()
     play.draw();
         
 };
+
+
+
+
+
 // Has all the dates listed.
 var GameScene= function(){   
     currentScene=2;
@@ -576,6 +599,8 @@ draw = function() {
     if(currentScene===12){Aqua();}
     if(currentScene===13){Pisces();}
     if(currentScene===14){Libra();}
+    if(currentScene===15){endScene();}
       
      
 };
+
