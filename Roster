@@ -6,11 +6,36 @@ Animals are from "Hawk, lion or snake — which is the spirit animal for your zo
 
 colors are from:https://artincontext.org/zodiac-colors/#:~:text=Each%20zodiac%20sign%20has%20a,as%20the%20zodiac%20color%20chart.
 */
+// Global Variables
 var currentScene=0;
 var stillPlaying=true;
+// code for stars on splashscreen 
+var xPositions = [];
+var yPositions = [];
+var dropColor  =[];
+var numDrops = 1;
+var bits=100;
+var dropSpeed = 2;
+var bitRain=true;
+var BOS=true;
+var stars = function (){
+for (var i =0; i<numDrops; ++i)
+    {
+        stroke(140, 121, 0);
+    xPositions.push(round(random(4,390)));
+    yPositions.push(round(random(0,300)));
+    }
+    
+    for (var i = 0; i < xPositions.length; i++) {
+         fill(dropColor[i]);//drop color
+    
+        ellipse(xPositions[i], yPositions[i], 5, 7);// draws drops
+    yPositions[i] += dropSpeed;
+        
+    }   
+};
 
-// Bitmojis
-
+//bitmojis
 var drawHead=function(HeadX,HeadY,headH){
     //body
     noStroke();
@@ -148,7 +173,7 @@ line(x+bitmojiHeight/100*106,y+bitmojiHeight/100*216,x+bitmojiHeight/100*95,y+bi
 line(x+bitmojiHeight/100*90,y+bitmojiHeight/100*216,x+bitmojiHeight/100*96,y+bitmojiHeight/100*193);//long r
 };
 
-//Object arrays
+// Object to hold Zodiac sign info
 var signs =[
     {
     name:"Aquarius",
@@ -235,8 +260,7 @@ var signs2 =[
      element:"Earth",
     animal:"Wolf"
     }];
-    
-//Khan Button class
+// Khan Button Class
 var Button = function(config) {
     currentScene=0;
     this.x = config.x || 0;
@@ -248,14 +272,12 @@ var Button = function(config) {
 };
 Button.prototype.draw = function() {
     noStroke();
-     fill
-(232, 185, 35);
-
-     //(0, 100, 0);
+    // The fill comes from Riss's Bitmoji Jewlery
+     fill(232, 185, 35);
     rect(this.x, this.y, this.width*0.7, this.height*0.78, 39);
     fill(255, 255, 255);
     textSize(25);
-    textAlign(LEFT, TOP);
+    textAlign(LEFT,TOP);
     text(this.label, this.x+32, this.y+this.height/14);
 };
 
@@ -272,7 +294,7 @@ Button.prototype.handleMouseClick = function() {
     }
 };
 
-//new buttons
+// Changes to Intro Scene
 var start = new Button({
     x:135,
     y: 100,
@@ -283,7 +305,7 @@ var start = new Button({
         
     }
 });
-
+// Takes User back to SplashScreen
 var quit = new  Button ({
     
     x: 200,
@@ -294,6 +316,8 @@ var quit = new  Button ({
 
     }
 });
+
+// Goes into the Actual Gamescene where all the dates are
 var play = new  Button ({
     x: 20,
     y: 200,
@@ -303,6 +327,7 @@ var play = new  Button ({
 
     }
 });
+// After selecting a sign you can use the back button if you want to see a different sign.
 var back = new  Button ({
     x: 150,
     y: 65,
@@ -312,27 +337,26 @@ var back = new  Button ({
 
     }
 });
-// function creates a base for each signs information. can easily plug in any object from array
+
+// Organizes and formats the information stored in the object
 var showSigns = function (a,index)
 { 
     image(getImage("cute/Star"), 45, 41, 54,67);
     textAlign(LEFT,TOP);
     fill(56, 14, 56);
     textSize(28);
-    text("Your sign is " + a[index].name + " ! ",71,19);
+    text("Your sign is " + a[index].name + " ! ",77,33);
     textSize(15);
-    text("Your birthday is between " +a[index].dates,37,119);
+    text("Your birthday is between " +a[index].dates,45,119);
     text(" Description:",145,150);
     text(a[index].name + " is a " + a[index].element + " sign!",130,176);
     text( a[index].facts,35,200,327,300);
     text("The Animal your sign represents is a " +a[index].animal,55,347);
-    back.draw();
-    
     
 };
-   
 
-//each signs specific scene 
+// members info once clicked
+
 var Aries= function(){
     currentScene=3;
     noStroke();
@@ -340,7 +364,9 @@ var Aries= function(){
     fill(255,105,97);
     rect(0,0,400,103);
     showSigns(signs,2);
-    //back button
+        back.draw();
+
+    
 };
 
 var Taurus = function(){
@@ -350,7 +376,7 @@ var Taurus = function(){
     fill(192, 232, 167);
     rect(0,0,400,103);
     showSigns(signs,3);
-   
+    back.draw();
 };
 var Gemini = function(){
     currentScene=5;
@@ -359,7 +385,7 @@ var Gemini = function(){
     fill(255, 255, 204);
     rect(0,0,400,103);
     showSigns(signs,4);
-   
+    back.draw();
 };
 var Cancer = function(){
     currentScene=6;
@@ -368,7 +394,7 @@ var Cancer = function(){
     fill(204, 204, 204);
     rect(0,0,400,103);
     showSigns(signs,5);
-    
+    back.draw();
 };
 var Leo = function(){
     currentScene=7;
@@ -377,16 +403,16 @@ var Leo = function(){
     fill(230, 204, 153);
     rect(0,0,400,103);
     showSigns(signs2,0);
-   
+    back.draw();
 };
 var Virgo  = function(){
     currentScene=8;
     noStroke();
     background(255, 255, 255);
-    fill(230, 177, 124);
+    fill(204, 153, 102);
     rect(0,0,400,103);
     showSigns(signs2,1);
-   
+    back.draw();
 };
 var Scorpio = function(){
     currentScene=9;
@@ -395,7 +421,7 @@ var Scorpio = function(){
     fill(210, 247, 250);
     rect(0,0,400,103);
     showSigns(signs2,3);
-    
+    back.draw();
 };
 var Sag = function(){
     currentScene=10;
@@ -404,7 +430,7 @@ var Sag = function(){
     fill(221, 204, 255);
     rect(0,0,400,103);
     showSigns(signs2,4);
-   
+    back.draw();
 };
 var Cap = function(){
     currentScene=11;
@@ -413,7 +439,7 @@ var Cap = function(){
     fill(204, 204, 204);
     rect(0,0,400,103);
     showSigns(signs2,5);
-   
+    back.draw();
 };
 var Aqua = function(){
     currentScene=12;
@@ -422,7 +448,7 @@ var Aqua = function(){
     fill(204, 229, 255);
     rect(0,0,400,103);
     showSigns(signs,0);
-  
+    back.draw();
 };
 var Libra = function(){
     currentScene=14;
@@ -431,7 +457,7 @@ var Libra = function(){
     fill(255, 204, 204);
     rect(0,0,400,103);
     showSigns(signs2,2);
-    
+    back.draw();
 };
 var Pisces = function(){
     currentScene=13;
@@ -440,17 +466,14 @@ var Pisces = function(){
     fill(144, 238, 144);
     rect(0,0,400,103);
     showSigns(signs,1);
-    
+    back.draw();
 }; 
 
 mouseClicked = function() {
- 
-     if (mouseIsPressed){
-             back.handleMouseClick();
-           playSound(getSound("rpg/metal-chime"));
-     }
+    // When mouse is pressed Metal chime will play. For the individual Zodiac Signs a water bubble sound will play.
+     playSound(getSound("rpg/metal-chime"));
     back.handleMouseClick();
-    { // if statments so buttons only work when a certain scene is up
+    {
         if(currentScene===0){
         start.handleMouseClick();
        }
@@ -458,9 +481,9 @@ mouseClicked = function() {
         quit.handleMouseClick();
         play.handleMouseClick();
         }
-        //Brings up different scenes depending on where you click
     if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 130 && mouseY < 150){ currentScene=12; Aqua();
-     playSound(getSound("rpg/water-bubble"));}
+     playSound(getSound("rpg/water-bubble"));
+    }
     if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 170 && mouseY < 200){currentScene=13; Pisces();   playSound(getSound("rpg/water-bubble"));}
     if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 220 && mouseY < 250){currentScene=3; Aries();   playSound(getSound("rpg/water-bubble"));}
     if(currentScene===2 && stillPlaying===true && mouseX > 30 && mouseX < 180 && mouseY > 270 && mouseY < 300){currentScene=4; Taurus(); playSound(getSound("rpg/water-bubble"));}
@@ -475,46 +498,33 @@ mouseClicked = function() {
     if(currentScene===2 && stillPlaying===true && mouseX > 200 && mouseX < 380 && mouseY > 350 && mouseY < 370){currentScene=11; Cap(); playSound(getSound("rpg/water-bubble")); }
     
       playSound(getSound("rpg/metal-chime"));
-        /*aries.handleMouseClick();
-        taurus.handleMouseClick();
-        gemini.handleMouseClick();
-        cancer.handleMouseClick();
-        leo.handleMouseClick();
-        virgo.handleMouseClick();
-        scorpio.handleMouseClick();
-        sag.handleMouseClick();
-        capir.handleMouseClick();
-        aqua.handleMouseClick();
-        pisces.handleMouseClick();
-        libra.handleMouseClick();}*/
         
-     }};
-        {
-  
-
-}
+     }
+     
+};
+        
 var splashScreen = function(){
-
     currentScene=0;
     background(37, 31, 61);
-    //Jayda's Bitmoji
-    // Riss's Bitmoji
+    // Jayda's Bitmoji
     drawBitmojiJ(19,204,50);
+    // Riss's Bitmoji
     drawBitmoji(254,248,50);
+     stars();
     fill(255, 255, 255);
     textSize(50);
     text("ASTROLOGY", 45,40);
     textSize(12);
-     text("Hello There! Our names are Riss and Jayda! We're here to guide you on your astrological journey. Above you will have the option to start and learn about different zodiac signs.",33,157,300,300);
+text("Hello There! Our names are Riss and Jayda! We're here to guide you on your astrological journey. Above you will have the option to start and learn about different zodiac signs.",33,157,300,300);
      text("Riss Rincon Rogers", 251,366);
       text("Jayda Silva", 95,361);
-      
+  // Drawing Start Button    
       start.draw();
+      
 };
+// defines what Astrology is 
 var introScene= function()
-{
-    stillPlaying= false;
-    currentScene=1;
+{   currentScene=1;
      background(37, 31, 61);
     textSize(16);
     fill(255, 255, 255);
@@ -525,7 +535,7 @@ var introScene= function()
     play.draw();
         
 };
-
+// Has all the dates listed.
 var GameScene= function(){   
     currentScene=2;
     stillPlaying=true;
@@ -537,7 +547,6 @@ var GameScene= function(){
     fill(128, 89, 55);
     textSize(25);
     text("When is your Birthday?",23,64);
-    // for loops to place the dates for each sign 
      for(var i = 0; i < signs2.length; i++)
  {
      textSize(12);
@@ -548,20 +557,9 @@ var GameScene= function(){
      textSize(12);
      text(signs[i].dates,36,i*45 + 133);
  }
-       /* taurus.draw();
-        gemini.draw();
-        cancer.draw();
-        leo.draw();
-        virgo.draw();
-        scorpio.draw();
-        sag.draw();
-        capir.draw();
-        aqua.draw();
-        pisces.draw();
-        libra.draw(); */  
 };
 
-
+// Only Draw function in the program, if there are multiple Draw functions one will get over wrriten and not run properly.
 draw = function() {
     if(currentScene===0){splashScreen();}
     if (currentScene===1){introScene();}
