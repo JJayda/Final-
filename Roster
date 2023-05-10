@@ -470,17 +470,20 @@ var Pisces = function(){
     back.draw();
 }; 
 //end Screen 
+//end Screen 
 var endScene = function()
 {
     currentScene=15;
     fill(255, 255, 255);
-    background (168, 164, 104);
+    background (0, 100, 0);
     textSize(25);
-    text ("Thank You!", 200,200);
-    textSize(30);
+    text ("Thank You!", 132,0);
+    textSize(16);
+     stars();
+    text("Hi There! Just a disclaimer that all the information is for fun and not meant to actively assign these characteristics to people", 58,300,300,300);
     drawBitmojiJ(160,54,50);
-    drawBitmoji(20,54,50);
-    stars();
+    drawBitmoji(20,69,50);
+
 
 };
 
